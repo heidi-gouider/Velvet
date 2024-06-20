@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Velvet{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+         <div class="row mt-5">
+             <div class="col-10 mx-auto">
+                 <h1>Nombre d'artistes trouvés : {{ artists | length }}</h1>
+                 {% for artist in artists %}
+                 <span class="d-block">
+                     {{ artist.name |upper }} - <b class="btn-primary p-1">{{ artist.discs | length }}</b> disques
+                 </span>
+                 {% endfor %}
+             </div>
+         </div>
+     </div>
+
+
+
+
+	{# <div class="container">
+		<div class="row mt-5">
+			<div class="col-10 mx-auto">
+				<h1>Nombre d'artistes trouvés :
+					{{ artists | length }}</h1> #}
+
+
+{# <h1>Liste des artistes</h1>
+				{% for artist in artists %}
+					<span class="d-block">
+						{{ artist.getName() |upper }}
+						-
+						<b class="btn-primary p-1">
+							{{ artist.getDiscs | length }}
+						</b>
+						disques
+					</span>
+					{% endfor %}
+
+
+					{% for disc in artists.discs %}
+						<div>
+							{{disc.getTitle }}
+						</div>
+					{% else %}
+						pas de disque
+					{% endfor %}
+			</div>
+		</div>
+	</div> #}
+{% include "partials/footer.php" %}
+
+	
+{% endblock %}

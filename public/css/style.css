@@ -1,0 +1,104 @@
+body {
+    background-color: #222222;
+}
+
+    h1, * {
+        color: #C9C9C9;
+    }   
+
+/* LE HEADER INCLU DANS TOUTES LES PAGES  */
+
+/* penser à ajouter une 'box-shadow' au bottom de la .nav et voir pour le bg 
+vérifier s'il n'est pas plus judicieux de nommer des classes perso au cas où il y aurait pls nav hors le header*/
+
+#menu {
+    height: 15vh;
+    background-color: rgba(226, 226, 226, 0.7);
+    /* box-shadow: 0px 5px 10px #42031f; */
+    z-index: 2;
+    /* opacity: 0.5; */
+    /* box-shadow: 0 10px 10px black; */
+  }
+    /* ------------------------------------------------------------------------------------------------------------ */
+
+/*  PAGE FORMULAIRE  */
+
+/* Styles for custom form inputs */
+/* .custom-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: black;
+  } */
+  
+  /* Styles for form errors */
+  /* .form-error {
+    color: red;
+  } */
+  
+  /* Styles for the submit button */
+  /* .btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  } */
+  
+  /* #formulaire {
+    background-color: rgba(36, 38, 41, 0.6);
+  } */
+  
+  #formulaire label {
+    color: #e2e2e2;
+    /* background-color: rgba(178, 181, 187, 0.3); */
+  }
+
+  /* ------------------------------------------------------------------------------------------------------------ */
+
+/*  LE FOOTER  */
+
+.footer {
+    bottom: 0;
+    background-color: #f8f9fa;
+    opacity: 0.9;
+  }
+  
+  .footer ul {
+    margin-bottom: 0;
+  }
+  
+  .footer ul li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .footer ul li:last-child {
+    margin-right: 0;
+  }
+  
+  .footer ul li a {
+    color: #50565c;
+    font-size: 24px;
+    text-decoration: none;
+  }
+  
+  .footer ul li a:hover {
+    /* color: #007bff; */
+    color: #ff8400;
+
+  }
+  
+  /* .link-external i:hover{
+  afficher le nom en texte du lien
+  } */
+  
+  /* ////////////////menu déroulant mobile/////////// */
+  @media (max-width: 767px) {
+    .collapse.navbar-collapse {
+        background-color: rgba(226, 226, 226, 0.7); /* Ajoutez votre couleur de fond ici */
+        box-shadow: 0px 5px 10px #42031f; /* Conservez votre ombre si nécessaire */
+    }
+  }
