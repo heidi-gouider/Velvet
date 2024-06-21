@@ -21,9 +21,13 @@ class ContactController extends AbstractController
    #[Route('/contact', name: 'app_contact')]
     public function index(Request $request, MailerInterface $mailer): Response
     {
+        // $data = new ContactData();
+
         //la méthode createForm() crée une instance du formulaire ContactFormType.
         //Ce formulaire sera affiché à l'aide de la méthode render() dans la vue index.html.twig
         $form = $this->createForm(ContactFormType::class);
+        // $form = $this->createForm(ContactFormType::class, $data);
+
 
         // Traitement des données soumises au formulaire
         $form->handleRequest($request);

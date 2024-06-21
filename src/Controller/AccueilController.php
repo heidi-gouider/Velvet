@@ -27,7 +27,9 @@ class AccueilController extends AbstractController
 
 
 
-    #[Route('/accueil', name: 'app_accueil')]
+    // #[Route('/accueil', name: 'app_accueil')]
+    #[Route('/', name: 'app_accueil')]
+
     public function index(): Response
     {
         //on appelle le repository pour accéder à la fonction
@@ -48,4 +50,30 @@ class AccueilController extends AbstractController
              'artists' => $artists
         ]);
     }
+
+    #[Route('/discs', name: 'app_discs')]
+    public function discs(): Response
+    {
+        //on appelle la fonction `findAll()` du repository de la classe `Disc` afin de récupérer tous les discs de la base de données;
+        $discs = $this->discRepo->findAll();
+        dump($discs);
+
+        return $this->render('accueil/discs.html.twig', [
+            'controller_name' => 'AccueilController',
+
+            'discs' => $discs
+        ]);
+    }
+
+    #[Route('/artists', name: 'app_artists')]
+    public function artists(): Response
+    {
+        $artists = $this->artistRepo->findAll();
+        dump($artists);
+        return $this->render('accueil/artists.html.twig', [
+            'controller_name' => 'AccueilController',
+            'artists' => $artists
+        ]);
+    }
+
 }

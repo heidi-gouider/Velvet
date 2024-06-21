@@ -84,15 +84,15 @@ class Artist
     }
 
 
-    public function getUrl(): ?string
-    {
-        return $this->url;
-    }
+    // public function getUrl(): ?string
+    // {
+    //     return $this->url;
+    // }
 
-    public function setUrl(?string $url): static
-    {
-        $this->url = $url;
+    // public function setUrl(?string $url): static
+    // {
+    //     $this->url = $url;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 }

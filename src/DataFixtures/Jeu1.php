@@ -15,7 +15,7 @@ class Jeu1 extends Fixture
 $artist1 = new Artist();
 
 $artist1->setName("Queens Of The Stone Age");
-$artist1->setUrl("https://qotsa.com/");
+// $artist1->setUrl("https://qotsa.com/");
 
 $manager->persist($artist1);
 
