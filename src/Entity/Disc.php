@@ -22,6 +22,9 @@ class Disc
     #[ORM\ManyToOne(inversedBy: 'discs')]
     private ?Artist $artist = null;
 
+    #[ORM\Column]
+    private ?int $prix = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -63,14 +66,26 @@ class Disc
         return $this;
     }
 
-    public function getLabel(): ?string
+    // public function getLabel(): ?string
+    // {
+    //     return $this->label;
+    // }
+
+    // public function setLabel(?string $label): static
+    // {
+    //     $this->label = $label;
+
+    //     return $this;
+    // }
+
+    public function getPrix(): ?int
     {
-        return $this->label;
+        return $this->prix;
     }
 
-    public function setLabel(?string $label): static
+    public function setPrix(int $prix): static
     {
-        $this->label = $label;
+        $this->prix = $prix;
 
         return $this;
     }

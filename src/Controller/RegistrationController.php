@@ -53,6 +53,9 @@ class RegistrationController extends AbstractController
             );
 
             // do anything else you need here, like send an email
+                 // return $this->redirectToRoute('app_accueil');
+                //  return $this->redirectToRoute('app_profil');
+                // }
 
             return $security->login($user, AppAutenticatorAuthenticator::class, 'main');
         }

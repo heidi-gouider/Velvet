@@ -11,6 +11,10 @@
 				{% for  artist in artists %}
 					<div class="col-md-6 mb-4">
 						<div class="card" id="images" style="width: 18rem;">
+                        	<a href="{{ path('app_discs_artist', {'artist_id': artist.id}) }}">
+                            {{ artist.name}}
+								{# <img class="card-img-top mx-auto" src="{{ asset('img/artist/' ~ artist.image) }}" alt="{{ categorie.libelle }}"> #}
+							</a>
 							{# <img src="{{ asset('IMG/food/' ~ disc.picture) }}" alt="{{ artist.name }}"> #}
 							<div class="card-body">
 								<h5 class="card-title">{{ artist.name }}></h5>

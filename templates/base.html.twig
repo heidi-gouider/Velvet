@@ -77,7 +77,10 @@
 			</div>
 		</nav> #}
 		{# <div class="container-fluid m-auto fixed-top mb-5" id="menu"> #}
-			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+		{# Barre de navigation #}
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container-fluid m-auto fixed-top mb-5" id="menu">
 
 			{# <a class="navbar-brand" href="{{ path('app_accueil') }}">Accueil</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -88,16 +91,25 @@
 					<img src="{{ asset('img/logo.webp') }}" alt="logo"  style="width: 50%; border-radius: 60%;">
 				</a>
 				
+			<!-- Bouton de menu avec icône du menu -->
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<i class="bi bi-list"></i>
+				<span class="navbar-toggler-icon"></span>
+
+				</button>
+				{# <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button> #}
+ 
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-				<ul class="navbar-nav mr-auto">
-
-							<a class="navbar-brand" href="{{ path('app_accueil') }}">Accueil</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-
+				{# <ul class="navbar-nav mr-auto"> #}
+				<ul class="navbar-nav ms-auto mb-2 mb-lg-0 justify-content-center text-sm">
+					<li class="nav-item pe-4 pt-2">
+						<a class="nav-link nav-link-custom" id="link-active" aria-current="page" href="{{ path('app_accueil') }}">Accueil</a>
+					</li>
+							{# <a class="navbar-brand" href="{{ path('app_accueil') }}">Accueil</a> #}
 
 					<li class="nav-item">
 						<a class="nav-link" href="{{ path('app_contact') }}">Contact</a>
@@ -129,14 +141,14 @@
 				</ul>
 			</div>
 			<!-- Bouton de menu avec icône du menu -->
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-					<i class="bi bi-list"></i>
+				{# <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<i class="bi bi-list"></i> #}
 					<!-- Icône du menu -->
 					<!-- <span class="navbar-toggler-icon" style="z-index:1"></span> -->
-				</button>
+				{# </button> #}
 
 		</nav>
-	{# </div> #}
+	</div>
 
 				{% block body %}{% endblock %}
 

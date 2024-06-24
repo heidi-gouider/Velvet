@@ -4,9 +4,15 @@ namespace App\Controller;
 
 use App\Repository\ArtistRepository;
 use App\Repository\DiscRepository;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping\Entity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 
 class AccueilController extends AbstractController
 {
@@ -26,7 +32,6 @@ class AccueilController extends AbstractController
     }
 
 
-
     // #[Route('/accueil', name: 'app_accueil')]
     #[Route('/', name: 'app_accueil')]
 
@@ -41,15 +46,20 @@ class AccueilController extends AbstractController
          $artists = $this->artistRepo->findAll();
         dump($artists);
 
-
+        // $user = $this->security->getUser();
 
         return $this->render('accueil/index.html.twig', [
             'controller_name' => 'AccueilController',
 
              //on va envoyer à la vue notre variable qui stocke un tableau d'objets $artistes (c'est-à-dire tous les artistes trouvés dans la base de données)
-             'artists' => $artists
+             'artists' => $artists,
         ]);
     }
+
+    // function index (Request $request, EntityManagerInterface $em,UserPasswordHasherInterface $hasher, Security $security): 
+    // Response {
+    //     dd($security->getUser());
+
 
     #[Route('/discs', name: 'app_discs')]
     public function discs(): Response
@@ -73,6 +83,21 @@ class AccueilController extends AbstractController
         return $this->render('accueil/artists.html.twig', [
             'controller_name' => 'AccueilController',
             'artists' => $artists
+        ]);
+    }
+
+    #[Route('/discs/{artist_id}', name: 'app_discs_artist')]
+    public function discsArtist(int $artist_id, ArtistRepository $artistRepo): Response
+    {
+        // je récupère la categorie correspondant à l'id
+        $artist = $this->artistRepo->find($artist_id);
+        dump($artist);
+
+        $discs = $artist->getDiscs();
+        return $this->render('accueil/discsArtist.html.twig', [
+            // 'controller_name' => 'CatalogueController',
+            'artists' => $artist,
+            'discs' => $discs,
         ]);
     }
 
