@@ -11,6 +11,12 @@ class ProfilController extends AbstractController
 {
     private $userRepo;
 
+    public function __construct(UserRepository $userRepo)
+    {
+        $this->userRepo = $userRepo;
+    }
+
+
     #[Route('/profil', name: 'app_profil')]
     public function index(): Response
     {

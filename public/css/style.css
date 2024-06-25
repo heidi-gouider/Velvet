@@ -6,7 +6,9 @@ body {
     h1, * {
         color: #C9C9C9;
     }   
-
+    a {
+        text-decoration: none;
+    }
 /* LE HEADER INCLU DANS TOUTES LES PAGES  */
 
 /* penser à ajouter une 'box-shadow' au bottom de la .nav et voir pour le bg 
@@ -14,7 +16,7 @@ vérifier s'il n'est pas plus judicieux de nommer des classes perso au cas où i
 
 #menu {
     height: 15vh;
-    /* background-color: rgba(226, 226, 226, 0.7); */
+    background-color: rgba(226, 226, 226, 0.7);
     /* box-shadow: 0px 5px 10px #42031f; */
     z-index: 2;
     /* opacity: 0.5; */

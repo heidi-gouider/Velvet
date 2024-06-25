@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Velvet{% endblock %}
+
+{% block body %}
+    <div class="contenu">
+		<div class="container">
+
+    <h1>Réinitialiser le mot de passe</h1>
+
+    {{ form_start(resetForm) }}
+        {{ form_row(resetForm.plainPassword) }}
+        <button class="btn btn-primary">Enregistrer</button>
+    {{ form_end(resetForm) }}
+    </div>
+    </div>
+
+{% endblock %}
