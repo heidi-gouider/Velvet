@@ -4,26 +4,26 @@
 {% endblock %}
 
 {% block body %}
-	<div class="contenu" style="background-image:url('{{ asset('IMG/fond/bg3.jpeg') }}')" >
+	<div class="contenu">
 		<h1 class="fst-italic">Nos artistes</h1>
 		<main class="container">
 			<div class="row">
 				{% for  artist in artists %}
 					<div class="col-md-6 mb-4">
-						<div class="card" id="images" style="width: 18rem;">
+						{# <div class="card" id="images" style="width: 18rem;"> #}
                         	<a href="{{ path('app_discs_artist', {'artist_id': artist.id}) }}">
                             {{ artist.name}}
 								{# <img class="card-img-top mx-auto" src="{{ asset('img/artist/' ~ artist.image) }}" alt="{{ categorie.libelle }}"> #}
 							</a>
 							{# <img src="{{ asset('IMG/food/' ~ disc.picture) }}" alt="{{ artist.name }}"> #}
-							<div class="card-body">
-								<h5 class="card-title">{{ artist.name }}></h5>
+							{# <div class="card-body"> #}
+								{# <h5 class="card-title">{{ artist.name }}></h5> #}
 								{# <p class="card-text">
 									{{ artist.description}}</p>
 								<p class="content bg-body">
 									{{ artist.prix}} euros</p>
 							</div> #}
-						</div>
+						{# </div> #}
 					</div>
 					{# $count++; // Incrémentez le compteur
 								            // Si vous avez affiché 2 disques, fermez la rangée actuelle et commencez une nouvelle rangée
@@ -37,6 +37,8 @@
 				{% endfor %}
 			</div>
 		</main>
+					</div>
+
 			{% include "partials/footer.php" %}
 
 	{% endblock %}

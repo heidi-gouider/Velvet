@@ -3,7 +3,7 @@ body {
   height: 100%;
   min-height: 100vh;
 }
-    h1, * {
+    h1 {
         color: #C9C9C9;
     }   
     a {
@@ -32,9 +32,9 @@ vérifier s'il n'est pas plus judicieux de nommer des classes perso au cas où i
 } */
     /* ----------------------------------------- */
 
-    /*  PAGE CATEGORY   */
+    /*  PAGE ARTIST   */
     
-    /* ******** page catégory */
+    /* ******** page artist */
     .contenu {
       margin-top: 15vh;
       min-height: 100vh;
@@ -45,7 +45,9 @@ vérifier s'il n'est pas plus judicieux de nommer des classes perso au cas où i
       z-index: 1;
       /* filter: blur(5px); */
     }
-    
+    #images {
+      background-color: #50565c;
+    }
     /* .contenu::before {
       content: "";
       position: absolute;
@@ -61,6 +63,21 @@ vérifier s'il n'est pas plus judicieux de nommer des classes perso au cas où i
       filter: blur(5px); 
     } */
     
+    /* ------------------------------------------------------------------------------------------------------------ */
+
+/*  PAGE Discs   */
+
+/* .card-header {
+  position: relative;
+} */
+
+.card-header button {
+  /* z-index: 1; */
+  position: absolute;
+}
+
+    /* ------------------------------------------------------------------------------------------------------------ */
+
 /*  PAGE FORMULAIRE  */
 
 /* Styles for custom form inputs */
