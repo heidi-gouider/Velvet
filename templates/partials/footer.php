@@ -35,7 +35,7 @@
                             <a href="#"><i class="bi bi-instagram"></i></a>
                         </li>
                     </ul>
-                    <p class="mt-5">&copy; 2023 The District. Tous droits réservés.</p>
+                    <p class="mt-5">&copy; 2024 Velvet Record. Tous droits réservés.</p>
                 </div>
                 <div class="col-md-4">
                     <ul class="text-end">

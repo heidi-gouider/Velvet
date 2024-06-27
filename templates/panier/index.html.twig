@@ -14,7 +14,7 @@
 					<table class="table text-white" id="formulaire">
 						<thead>
 							<tr>
-								<th>Disc</th>
+								<th>Disque</th>
 								<th>Prix</th>
 								<th>Quantité</th>
 								<th>Total</th>
@@ -25,6 +25,7 @@
 							{% for element in data %}
 								<tr>
 									<td>{{ element.disc.title }}</td>
+									{# penser à %par 100 si les prix sont en centimes #}
 									<td>{{ element.disc.prix }} €</td>
 									<td>{{ element.quantite }}</td>
 									<td>{{ element.quantite * element.disc.prix }} €</td>
@@ -52,7 +53,9 @@
 							</tr>
 						</tfoot>
 					</table>
-                    <a href="#" class="btn btn-primary">Valider ma commande</a>
+                    <a href="{{ path('app_commande_ajout') }}" class="btn btn-primary">Valider ma commande</a>
+					<a href="#" class="btn btn-primary">Retour</a>
+
 				</div>
 			</main>
 		</div>

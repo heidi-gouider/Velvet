@@ -16,8 +16,8 @@ class ProfilController extends AbstractController
         $this->userRepo = $userRepo;
     }
 
-
     #[Route('/profil', name: 'app_profil')]
+    // #[IsGranted('ROLE_USER')]
     public function index(): Response
     {
         // Récuperation de l'identifiant unique de l'utilisateur connecté

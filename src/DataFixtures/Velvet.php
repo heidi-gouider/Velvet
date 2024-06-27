@@ -40,3 +40,8 @@ $disc = array(
   array('disc_id' => '14','disc_title' => 'Beggars Banquet','disc_year' => '1968','disc_picture' => 'Beggars Banquet.jpeg','disc_label' => 'Rolling Stones Records','disc_genre' => 'Blues Rock, Classic Rock','disc_prix' => '33','artist_id' => '1'),
   array('disc_id' => '15','disc_title' => 'Laboratory of sound','disc_year' => '1995','disc_picture' => 'Laboratory of sound.jpeg','disc_label' => 'Rebel Rec.','disc_genre' => 'Rock','disc_prix' => '33','artist_id' => '9'),
 );
+
+//`velvet`.`user`
+$user = array(
+  array('user_id' => 'Kelly Dillard','user_email' => 'kelly@gmail.com', 'user_roles' => '')
+);

@@ -16,10 +16,12 @@ class PanierController extends AbstractController
 {
     // #[Route('/panier', name: 'app_panier')]
     #[Route('/', name: 'index')]
-        public function index(SessionInterface $session, DiscRepository $discRepo)
+        public function index(SessionInterface $session, Request $request, DiscRepository $discRepo)
         {
+            // j'initialise les variables
             $panier = $session->get('panier', []);
-    
+            // Pour permettre à l'utilisateur de revenir sur la dernière page visitée
+            $referer = $request->headers->get('referer');
             $data = [];
             $total = 0;
     
@@ -118,8 +120,8 @@ class PanierController extends AbstractController
         #[Route('/retirer/{id}', name: 'retirer')]
         public function retirer(disc $disc, SessionInterface $session)
         {
-    
-            // récuerer l'id du plat
+
+            // récuperer l'id du plat
             $id = $disc->getId();
             // Obtenez le panier existant à partir de la session ou créez-en un nouveau.
             $panier = $session->get('panier', []);
@@ -144,6 +146,7 @@ class PanierController extends AbstractController
             $panier = $session->get('panier', []);
     
             if (!empty($panier[$id])) {
+                // si le panier est vide de défais la variable
                 unset($panier[$id]);
             }
             $session->set('panier', $panier);
