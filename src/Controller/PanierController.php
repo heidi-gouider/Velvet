@@ -39,42 +39,42 @@ class PanierController extends AbstractController
         public function add(Disc $disc, SessionInterface $session, Request $request)
         {
     // dd($session);
-            // $quantite = $request->request->get('quantite');
-            // $action = $request->request->get('action');
+            $quantite = $request->request->get('quantite');
+            $action = $request->request->get('action');
     
             // Effectue la logique de gestion de quantité
             // if ($quantite < 1) {
             //     $quantite = 1;
             // }        
     
-            // if ($action === 'increment') {
-            //     $quantite++;
-            // } elseif ($action === 'decrement' && $quantite > 1) {
-            //     $quantite--;
-            // }
+            if ($action === 'increment') {
+                $quantite++;
+            } elseif ($action === 'decrement' && $quantite > 1) {
+                $quantite--;
+            }
     
     
-            // $form = $this->createFormBuilder()
-            //     ->add('quantite', IntegerType::class, [
-            //         'attr' => ['min' => 1, 'max' => 10],
+            $form = $this->createFormBuilder()
+                ->add('quantite', IntegerType::class, [
+                    'attr' => ['min' => 1, 'max' => 10],
                     // Définis les valeurs minimales et maximales
-            //     ])
-            //     ->getForm();
+                ])
+                ->getForm();
     
-            // $form->handleRequest($request);
+            $form->handleRequest($request);
     
-            // if ($form->isSubmitted() && $form->isValid()) {
-            //     $quantite = $form->get('quantite')->getData();
+            if ($form->isSubmitted() && $form->isValid()) {
+                $quantite = $form->get('quantite')->getData();
                 // Traitement des données, y compris la quantité choisie
-            // }
+            }
             // récuperer l'id du disc
             $id = $disc->getId();
 
             // Obtenez le panier existant à partir de la session ou créez-en un nouveau.
             $panier = $session->get('panier', []);
     
-            // Ajoutez ou mettez à jour la quantité du plat dans le panier.
-            // $panier[$disc->getId()] = $quantite;
+            // Ajoutez ou mettez à jour la quantité du disc dans le panier.
+            $panier[$disc->getId()] = $quantite;
     
             // Enregistrez le panier mis à jour dans la session.
             $session->set('panier', $panier);
@@ -87,17 +87,17 @@ class PanierController extends AbstractController
             return $this->redirectToRoute('panier_index');
     
      // Récupérez l'URL de la page actuelle et stockez-la dans la session.
-            // $referer = $request->headers->get('referer');
-            // $session->set('referer_url', $referer);
+            $referer = $request->headers->get('referer');
+            $session->set('referer_url', $referer);
     
             // Redirigez l'utilisateur vers la page précédente.
-            // return $this->redirect($referer);        
+            return $this->redirect($referer);        
             // return $this->render('panier/index.html.twig', [
             //     'controller_name' => 'PanierController',
             // ]);
         }
     
-        #[Route('/ajout/{id}', name: 'ajout')]
+        #[Route('/ajoute/{id}', name: 'ajout')]
         public function ajout(disc $disc, SessionInterface $session)
         {
             $id = $disc->getId();
