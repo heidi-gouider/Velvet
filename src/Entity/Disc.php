@@ -22,9 +22,11 @@ class Disc
     #[ORM\ManyToOne(inversedBy: 'discs')]
     private ?Artist $artist = null;
 
+    // #[ORM\Column(type: 'decimal', precision: 10, scale: 2, nullable: true)]
+    // private ?float $prix = null;
+
     #[ORM\Column(type: 'decimal', precision: 10, scale: 2, nullable: true)]
-    // #[ORM\Column]
-    private ?float $prix = null;
+    private ?string $prix = null;
 
     #[ORM\Column(length: 255)]
     private ?string $label = null;
