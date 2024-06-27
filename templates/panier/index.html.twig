@@ -10,7 +10,7 @@
 		<main class="container mt-5">
 			<div class="row">
 				<div class="col-8">
-                		<h2 class="fst-italic text-center text-white">Mon panier</h2>
+                		<h2 class="text-center text-white">Mon panier</h2>
 					<table class="table text-white" id="formulaire">
 						<thead>
 							<tr>
@@ -24,7 +24,7 @@
 						<tbody>
 							{% for element in data %}
 								<tr>
-									<td>{{ element.disc.libelle }}</td>
+									<td>{{ element.disc.title }}</td>
 									<td>{{ element.disc.prix }} €</td>
 									<td>{{ element.quantite }}</td>
 									<td>{{ element.quantite * element.disc.prix }} €</td>
