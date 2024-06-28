@@ -129,6 +129,14 @@
 								<a class="nav-link nav-link-custom" href="{{ path('app_login') }}" id="monCompteBtn" title="Inscription/Connexion">Connexion</a>
 							</li>
 						{% endif %}
+						<a class="btn btn-command rounded-0 mt-3 align-items-center text-nowrap" href="{{ path('panier_index') }}">
+							<span class="d-md-none">Mon panier</span>
+							<span
+								class="d-md-flex d-none">
+								<!-- <i class="bi bi-basket btn-icon"></i>-->
+								Mon panier</span>
+						</a>
+
 					{# <li class="nav-item active">
 						<a class="nav-link" href="{{ path('app_login') }}">Inscription</a>
 					</li>

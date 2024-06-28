@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Disc;
+use App\Entity\Commande;
+use App\Entity\Detail;
 use App\Repository\DiscRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -10,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Attribute\Route;
+use Doctrine\ORM\EntityManagerInterface;
 
 #[Route('/panier', name: 'panier_')]
 class PanierController extends AbstractController
@@ -93,13 +96,13 @@ class PanierController extends AbstractController
             $session->set('referer_url', $referer);
     
             // Redirigez l'utilisateur vers la page précédente.
-            return $this->redirect($referer);        
-            // return $this->render('panier/index.html.twig', [
-            //     'controller_name' => 'PanierController',
-            // ]);
+            // return $this->redirect($referer);        
+            return $this->render('panier/index.html.twig', [
+                'controller_name' => 'PanierController',
+            ]);
         }
     
-        #[Route('/ajoute/{id}', name: 'ajout')]
+        #[Route('/ajout/{id}', name: 'ajout')]
         public function ajout(disc $disc, SessionInterface $session)
         {
             $id = $disc->getId();
@@ -125,13 +128,15 @@ class PanierController extends AbstractController
             $id = $disc->getId();
             // Obtenez le panier existant à partir de la session ou créez-en un nouveau.
             $panier = $session->get('panier', []);
-    
+            // app_commande_ajoutco
+            //     unset($panier[$id]);
             if (!empty($panier[$id])) {
                 if ($panier[$id] > 1)
                     $panier[$id]--;
             } else {
                 unset($panier[$id]);
             }
+            
             // Enregistrez le panier mis à jour dans la session.
             $session->set('panier', $panier);
     
@@ -157,4 +162,52 @@ class PanierController extends AbstractController
         //     'controller_name' => 'PanierController',
         // ]);
     }
+
+    #[Route('/valider', name: 'valider')]
+    public function valider(SessionInterface $session, EntityManagerInterface $em)
+    {
+        $panier = $session->get('panier', []);
+        if (empty($panier)) {
+            return $this->redirectToRoute('panier_index');
+        }
+
+        $user = $this->getUser();
+
+        $commande = new Commande();
+        $commande->setUser($user);
+        $commande->setDateCommande(new \DateTime());
+        $commande->setEtat('1');
+
+        $total = 0;
+        foreach ($panier as $id => $quantite) {
+            $disc = $em->getRepository(Disc::class)->find($id);
+            $detail = new Detail();
+            $detail->setCommande($commande);
+            $detail->setDisc($disc);
+            $detail->setQuantite($quantite);
+
+            $em->persist($detail);
+
+            $total += $disc->getPrix() * $quantite;
+        }
+
+        $commande->setTotal($total);
+
+        $em->persist($commande);
+        $em->flush();
+
+        $session->remove('panier');
+
+        $this->addFlash('success', 'Votre commande a bien été envoyée.');
+
+        return $this->redirectToRoute('commande_detail', ['id' => $commande->getId()]);
+    }
+
+    #[Route('/commande/{id}', name: 'commande_detail')]
+    public function commandeDetail(Commande $commande)
+    {
+        return $this->render('commande/index.html.twig', [
+            'commande' => $commande,
+        ]);
+}
 }

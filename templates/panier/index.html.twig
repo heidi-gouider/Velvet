@@ -54,7 +54,10 @@
 						</tfoot>
 					</table>
                     <a href="{{ path('app_commande_ajout') }}" class="btn btn-primary">Valider ma commande</a>
-					<a href="#" class="btn btn-primary">Retour</a>
+					{# je redirige vers le détail de la commande #}
+					{# <a href="{{ path('commande_detail', {'id': commande.id}) }}">Valider ma commande</a> #}
+					{# <a href="{{ path('panier_valider') }}" class="btn btn-primary">Valider ma commande</a> #}
+					{# <a href="#" class="btn btn-primary">Retour</a> #}
 
 				</div>
 			</main>
