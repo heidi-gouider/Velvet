@@ -18,7 +18,7 @@ class CommandeController extends AbstractController
     #[isGranted('ROLE_USER', message: "Vous devez avoir un compte pour accèder à cette page!")]
 
     #[Route('/ajout', name: 'ajout')]
-    public function ajout(SessionInterface $session, DiscRepository $discRepository, EntityManagerInterface $em): Response
+    public function ajout(SessionInterface $session, DiscRepository $discRepo, EntityManagerInterface $em): Response
     {
         // je m'assure que l'utilisateur est connecté
         //on restrictionne l'accès ICI :
@@ -37,22 +37,33 @@ class CommandeController extends AbstractController
   // On remplit la commande
   $commande->setUser($this->getUser());
 
+  $commande->setDateCommande(new \DateTime());
+  $commande->setEtat(0); // Etat initial
+
+  $total = 0;
+
   // On parcourt le panier pour créer les détails de commande
   foreach($panier as $item => $quantite){
-      $Detail = new Detail();
+      $detail = new Detail();
 
       // On va chercher le produit
-      $disc = $discRepository->find($item);
+      $disc = $discRepo->find($item);
       
       $prix = $disc->getPrix();
 
       // On crée le détail de commande
-      $Detail->setDisc($disc);
-    //   $Detail->setTotal($prix);
-      $Detail->setQuantite($quantite);
+      $detail->setDisc($disc);
+    //   $detail->setTotal($prix);
+      $detail->setQuantite($quantite);
+      $commande->addDetail($detail);
 
-      $commande->addDetail($Detail);
+      $total += $prix * $quantite;
+
+       // Persist chaque detail
+       $em->persist($detail);
   }
+
+  $commande->setTotal($total);
 
   // On persiste et on flush
   $em->persist($commande);
@@ -63,7 +74,7 @@ class CommandeController extends AbstractController
   $this->addFlash('message', 'Commande créée avec succès');
   return $this->redirectToRoute('app_accueil');
         return $this->render('commande/index.html.twig', [
-            'controller_name' => 'CommandesController',
+            'controller_name' => 'CommandeController',
         ]);
     }
 }

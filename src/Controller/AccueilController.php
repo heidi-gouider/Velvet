@@ -21,7 +21,7 @@ class AccueilController extends AbstractController
     //N'oubliez pas d'importer vos respositories (les lignes "use..." en haut de la page)
     private $artistRepo;
     private $discRepo;
-    private $em;
+    // private $em;
 
     public function __construct(ArtistRepository $artistRepo, DiscRepository $discRepo)
     {

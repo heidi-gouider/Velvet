@@ -22,6 +22,18 @@ $artist = array(
   array('artist_id' => '10','artist_name' => 'The Clash','artist_url' => NULL)
 );
 
+/* `velvet`.`commande` */
+$commande = array(
+  array('id' => '2', 'user_id' => '1','id_disc' => '4','quantite' => '4','total' => '16.00','date_commande' => '2020-11-30 03:52:43','etat' => 'Livrée'),
+  array('id' => '3',  'user_id' => '2','id_disc' => '5','quantite' => '2','total' => '20.00','date_commande' => '2020-11-30 04:07:17','etat' => 'Livrée','nom_client' => 'Thomas Gilchrist','telephone_client' => '7410001450','email_client' => 'thom@gmail.com','adresse_client' => '1277 Sunburst Drive'),
+  array('id' => '4', 'user_id' => '3', 'id_disc' => '5','quantite' => '1','total' => '10.00','date_commande' => '2021-05-04 01:35:34','etat' => 'Livrée','nom_client' => 'Martha Woods','telephone_client' => '78540001200','email_client' => 'marthagmail.com','adresse_client' => '478 Avenue Street'),
+  array('id' => '6',  'user_id' => '4', 'id_disc' => '9','quantite' => '1','total' => '7.00','date_commande' => '2021-07-20 06:10:37','etat' => 'Livrée','nom_client' => 'Charlie','telephone_client' => '7458965550','email_client' => 'charlie@gmail.com','adresse_client' => '3140 Bartlett Avenue'),
+  array('id' => '7',  'user_id' => '5', 'id_disc' => '10','quantite' => '2','total' => '8.00','date_commande' => '2021-07-20 06:40:21','etat' => 'En cours de livraison','nom_client' => 'Claudia Hedley','telephone_client' => '7451114400','email_client' => 'hedley@gmail.com','adresse_client' => '1119 Kinney Street'),
+  array('id' => '8',  'user_id' => '6', 'id_disc' => '14','quantite' => '1','total' => '6.00','date_commande' => '2021-07-20 06:40:57','etat' => 'En préparation','nom_client' => 'Vernon Vargas','telephone_client' => '7414744440','email_client' => 'venno@gmail.com','adresse_client' => '1234 Hazelwood Avenue'),
+  array('id' => '9',  'user_id' => '7', 'id_disc' => '9','quantite' => '4','total' => '20.00','date_commande' => '2021-07-20 07:06:06','etat' => 'Annulée','nom_client' => 'Carlos Grayson','telephone_client' => '7401456980','email_client' => 'carlos@gmail.com','adresse_client' => '2969 Hartland Avenue'),
+  array('id' => '10',  'user_id' => '8', 'id_disc' => '16','quantite' => '4','total' => '12.00','date_commande' => '2021-07-20 07:11:06','etat' => 'Livrée','nom_client' => 'Jonathan Caudill','telephone_client' => '7410256996','email_client' => 'jonathan@gmail.com','adresse_client' => '1959 Limer Street')
+);
+
 //`velvet`.`disc`
 $disc = array(
   array('disc_id' => '1','disc_title' => 'Fugazi','disc_year' => '1984','disc_picture' => 'Fugazi.jpeg','disc_label' => 'EMI','disc_genre' => 'Prog','disc_prix' => '14.99','artist_id' => '7'),
