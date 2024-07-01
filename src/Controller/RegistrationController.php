@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Repository\UserRepository;
 use App\Security\AppAutenticatorAuthenticator;
 use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
@@ -25,14 +26,25 @@ class RegistrationController extends AbstractController
     }
 
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, Security $security, EntityManagerInterface $entityManager): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, Security $security, EntityManagerInterface $entityManager, UserRepository $userRepo): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
+            $email = $user->getEmail();
+
+
+            // Vérifier si l'utilisateur existe déjà avec cet e-mail
+            $existingUser = $userRepo->findOneBy(['email' => $email]);
+            // $existingUser = $this->getDoctrine()->getRepository(User::class)->findOneBy(['email' => $email]);
+
+            if ($existingUser) {
+                $this->addFlash('warning', 'Vous avez déjà un compte. Veuillez vous connecter.');
+                return $this->redirectToRoute('app_login'); // Rediriger vers la page de connexion
+            }
+                        // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,

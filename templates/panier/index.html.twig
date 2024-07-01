@@ -5,12 +5,13 @@
 
 {% block body %}
 
-	<div class="contenu">
+	<div
+		class="contenu">
 		{# <h1 class="fst-italic text-center">Mon panier</h1> #}
 		<main class="container mt-5">
 			<div class="row">
 				<div class="col-8">
-                		<h2 class="text-center text-white">Mon panier</h2>
+					<h2 class="text-center text-white">Mon panier</h2>
 					<table class="table text-white" id="formulaire">
 						<thead>
 							<tr>
@@ -26,9 +27,11 @@
 								<tr>
 									<td>{{ element.disc.title }}</td>
 									{# penser à %par 100 si les prix sont en centimes #}
-									<td>{{ element.disc.prix }} €</td>
+									<td>{{ element.disc.prix }}
+										€</td>
 									<td>{{ element.quantite }}</td>
-									<td>{{ element.quantite * element.disc.prix }} €</td>
+									<td>{{ element.quantite * element.disc.prix }}
+										€</td>
 									<td>
 										<a href="{{ path('panier_retirer', {id: element.disc.id }) }}" class="btn btn-danger">-</a>
 										<a href="{{ path('panier_ajout', {id: element.disc.id }) }}" class="btn btn-success">+</a>
@@ -45,7 +48,8 @@
 							<tr>
 								<td colspan="3">Total</td>
 								<td colspan="1">
-									<b>{{ total }} €</b>
+									<b>{{ total }}
+										€</b>
 								</td>
 								<td colspan="">
 									<a href="#" class="btn btn-secondary">Supprimer ma commande</a>
@@ -53,9 +57,16 @@
 							</tr>
 						</tfoot>
 					</table>
-                    <a href="{{ path('app_commande_ajout') }}" class="btn btn-primary">Valider ma commande</a>
+					<a href="{{ path('app_commande_ajout') }}" class="btn btn-primary">Valider ma commande</a>
 					{# je redirige vers le détail de la commande #}
-					{# <a href="{{ path('commande_detail', {'id': commande.id}) }}">Valider ma commande</a> #}
+					{# <a href="{{ path('commande_detail', {'id': commande.id}) }}">Mes commandes</a> #}
+					{# {% if commande is defined %} #}
+						{# <a class="text-white" href="{{ path('panier_commande_detail', {'id': commande.id}) }}">Mes commandes</a> #}
+						<a class="text-white" {# href="{{ path('app_commande_detail') }}" #}>Mes commandes</a>
+
+					{# {% else %}
+						<p>Aucune commande trouvée</p>
+					{% endif %} #}
 					{# <a href="{{ path('panier_valider') }}" class="btn btn-primary">Valider ma commande</a> #}
 					{# <a href="#" class="btn btn-primary">Retour</a> #}
 

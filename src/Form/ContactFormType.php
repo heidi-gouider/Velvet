@@ -32,11 +32,6 @@ class ContactFormType extends AbstractType
 
                 ]
             )
-            // les données liées a la checkbox ne seront pas enregistrer dans l'entité ou avec le shema de données, pour le faire il faudra le faire manuellement
-            // ->add('agreeTerms', CheckboxType::class, ['mapped' => false])
-            ->add('save', SubmitType::class, [
-                'label' => 'Envoyer le message',
-            ])
 
             ->add(
                 'jaccepte',
@@ -50,7 +45,15 @@ class ContactFormType extends AbstractType
                         ]),
                     ],
                 ]
-            );
+
+            )
+
+                        // les données liées a la checkbox ne seront pas enregistrer dans l'entité ou avec le shema de données, pour le faire il faudra le faire manuellement
+            // ->add('agreeTerms', CheckboxType::class, ['mapped' => false])
+            ->add('save', SubmitType::class, [
+                'label' => 'Envoyer le message',
+            ]);
+
     }
 
     // la méthode configureOptions et l'objet $resolver définissent les options par défaut du formulaire.
