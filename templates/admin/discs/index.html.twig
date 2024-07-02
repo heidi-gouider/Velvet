@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Velvet
+{% endblock %}
+
+{% block body %}
+	<div class="contenu">
+
+		<h2 class="fst-italic text-white text-center">Liste des disques</h2>
+
+		<div
+			class="container mx-auto mt-5" id="formulaire">
+			{# barre de nav pour l'admin #}
+            	<div class="row text-center">
+
+			{% include "partials/adminnav.html.twig" %}
+
+			{# <main class="col-9 border border-light bg-light p-3"> #}
+            			<main class="col-9 border p-3">
+				{# <div class="row text-center"> #}
+					{% for disc in discs %}
+						<div class="col-md-6 mb-4">
+							<div class="card" style="width: 18rem;">
+								{# <img src="{{ asset('img/' ~ disc.picture) }}" alt="{{ disc.title }}"> #}
+								<div class="card-body">
+									<h5 class="card-title">
+										{{ disc.title }}</h5>
+									<p class="content bg-body">
+										{{ disc.prix}}
+										euros
+									</p>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</main>
+		</div>
+	</div>
+{% endblock %}

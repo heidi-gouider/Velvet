@@ -10,6 +10,7 @@
 <div class="contenu">
 		<h1 class="fst-italic">Inscription</h1>
 		<div class="container text-white">
+			<div class="row text-center">
 
     {{ form_errors(registrationForm) }}
 
@@ -24,6 +25,8 @@
     {{ form_end(registrationForm) }}
     </div>
         </div>
+        </div>
+
 		{% include "partials/footer.php" %}
 
 {% endblock %}
