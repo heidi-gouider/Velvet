@@ -1,0 +1,21 @@
+{# pour visualiser le rendu de la page en restant en mod device
+pour ne pas à avoir à vider le cache à chaque fois quand on passe en app_profil_editdans l'url serveur/_error/n°erreur
+https://127.0.0.1.8000/_error/403 #}
+{% extends "base.html.twig "%}
+
+
+{% block body %}
+	<div class="contenu">
+
+		<h2 class="fst-italic text-center">Oups !!</h2>
+
+		<div class="container mx-auto mt-5">
+
+			{# <p>
+				blalbla</p> #}
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/9AZA6fREkoA?si=kP9YQZTOQ1NVuRju" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+		</div>
+	</div>
+	{# {% include "partials/footer.php" %} #}
+{% endblock %}

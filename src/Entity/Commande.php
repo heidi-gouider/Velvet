@@ -30,7 +30,7 @@ class Commande
 
     #[ORM\ManyToOne(inversedBy: 'commandes')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $user = null;
+    private ?User $user;
 
     public function __construct()
     {
@@ -114,13 +114,27 @@ class Commande
 
         return $this;
     }
+    public function addUser(User $user): self
+    {
+        $this->user = $user;
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->user === $user) {
+            $this->user = null;
+        }
+
+        return $this;
+    }
 
     public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(?User $user): static
+    public function setUser(?User $user): self
     {
         $this->user = $user;
 

@@ -4,8 +4,10 @@ namespace App\Controller;
 
 use App\Entity\Commande; 
 use App\Entity\Detail; 
+use App\Entity\User;
 use App\Repository\DiscRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -75,6 +77,25 @@ class CommandeController extends AbstractController
   return $this->redirectToRoute('app_accueil');
         return $this->render('commande/index.html.twig', [
             'controller_name' => 'CommandeController',
+        ]);
+    }
+// je récupere l'historique de commande de l'utilisateur
+// pour l'afficher via le lien dans la vue du panier
+    /**
+     * @Route("/panier/commandes", name="panier_commandes")
+     */
+    #[Route('/panier/commandes', name: 'panier_commandes')]
+
+    public function index(UserInterface $user)
+    {
+
+    if (!$user instanceof User) {
+        throw new \Exception('User must be an instance of App\Entity\User');
+    }
+        $commandes = $user->getCommandes();
+
+        return $this->render('panier/commandes.html.twig', [
+            'commandes' => $commandes,
         ]);
     }
 }

@@ -1,0 +1,42 @@
+{# templates/panier/commandes.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Historique des commandes
+{% endblock %}
+
+{% block body %}
+	<div class="contenu">
+		<h1 class="fst-italic text-center">Historique des commandes</h1>
+		<main class="container mt-5">
+
+
+			{% if commandes is empty %}
+				<p>Vous n'avez pas encore passé de commande.</p>
+			{% else %}
+				<table class="text-white">
+					<thead>
+						<tr>
+							<th>ID</th>
+							{# <th>Date</th> #}
+							<th>Montant</th>
+							<th>Détails</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for commande in commandes %}
+							<tr>
+								<td>{{ commande.id }}</td>
+								{# <td>{{ commande.date_commande|date('Y-m-d H:i') }}</td> #}
+								<td>{{ commande.total }}€</td>
+								<td>
+									{# <a href="{{ path('order_show', {'id': commande.id}) }}">Voir</a> #}
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			{% endif %}
+		</main>
+	</div>
+{% endblock %}
