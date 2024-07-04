@@ -19,6 +19,7 @@
 							<tr>
 								<th>Id</th>
 								<th>Nom</th>
+								<th>Actions</th>
 							</tr>
 						</thead>
 
@@ -29,11 +30,14 @@
 								<div
 									class="col-md-6 mb-4">
 									{# <a href="{{ path('app_discs_artist', {'artist_id': artist.id}) }}">
-																	{{ artist.name}}
-																</a> #}
+																										{{ artist.name}}
+																									</a> #}
 									<tr>
 										<td>{{ artist.id }}</td>
 										<td>{{ artist.name }}</td>
+										<td>
+											<a href="#">Modifier</a>
+										</td>
 									</tr>
 								</div>
 
@@ -42,23 +46,23 @@
 						</tbody>
 					</table>
 					{# <h2>Nombre d'artistes trouvés :
-					
-											{{ artists | length }}</h2>
-										{% for artist in artists %} #}
+										
+																{{ artists | length }}</h2>
+															{% for artist in artists %} #}
 				{# <span class="d-block"> #}
 					{# <div
-												class="col-md-6 mb-4">
-					
-												{{ artist.name |upper }}
-												-
-					                        </div> #}
+																	class="col-md-6 mb-4">
+										
+																	{{ artist.name |upper }}
+																	-
+										                        </div> #}
 
 					{# <div
-												class="col-md-6 mb-4">
-					
-					                            <b class="btn-primary p-1">{{ artist.discs | length }}</b>
-												disques
-					                            </div> #}
+																	class="col-md-6 mb-4">
+										
+										                            <b class="btn-primary p-1">{{ artist.discs | length }}</b>
+																	disques
+										                            </div> #}
 
 					{# </span> #}
 					{# {% endfor %} #}

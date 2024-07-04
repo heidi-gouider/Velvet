@@ -16,34 +16,21 @@
 				{% include "partials/adminnav.html.twig" %}
 
 				{# <main class="col-9 border border-light bg-light p-3"> #}
-				<main class="col-9 border p-3">
+				<main
+					class="col-9 border p-3">
 					{# <div class="row text-center"> #}
-					{# {% for disc in discs %}
-																<div class="col-md-6 mb-4">
-																	<div
-																		class="card" style="width: 18rem;">
-																		<div class="card-body">
-																			<h5 class="card-title">
-																				{{ disc.title }}</h5>
-																			<p class="content bg-body">
-																				{{ disc.label}}
-																				{{ disc.prix}}
-																				euros
-																			</p>
-																		</div>
-																	</div>
-																</div>
-															{% endfor %} #}
-						<table class="table text-white"> <thead>
+					<table class="table text-white">
+						<thead>
 							<tr>
 								<th>Id</th>
 								<th>Nom</th>
+								<th>Image</th>
 								<th>Label</th>
 								<th>Prix unitaire</th>
-								<th>Id artist</th>
+								{# <th>Id artist</th> #}
+								<th>Nom artist</th>
 								<th>Quantité</th>
-
-
+								<th>Actions</th>
 							</tr>
 						</thead>
 
@@ -54,16 +41,19 @@
 								<div
 									class="col-md-6 mb-4">
 									{# <a href="{{ path('app_discs_artist', {'artist_id': artist.id}) }}">
-																																												{{ disc.title}}
-																																											</a> #}
+																																																														{{ disc.title}}
+																																																													</a> #}
 									<tr>
 										<td>{{ disc.id }}</td>
 										<td>{{ disc.title }}</td>
+										{# <td>{{ disc.picture }}</td> #}
+										<td><img src="{{ asset('img/' ~ disc.picture) }}" alt="{{ disc.title }}"style="width: 100px; height: auto;"></td>
 										<td>{{ disc.label }}</td>
 										<td>{{ disc.prix }}</td>
-										<td>{{ disc.artist.id }}</td>
+										{# <td>{{ disc.artist.id }}</td> #}
+										<td>{{ disc.artist.name }}</td>
 										<td>{{ disc.quantite }}</td>
-
+										<td><a href="#">Modifier</a></td>
 									</tr>
 								</div>
 							{% endfor %}
