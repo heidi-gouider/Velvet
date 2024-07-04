@@ -86,7 +86,7 @@ vérifier s'il n'est pas plus judicieux de nommer des classes perso au cas où i
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    color: black;
+    /* color: black; */
   }
   
   /* Styles for form errors */
@@ -111,7 +111,7 @@ vérifier s'il n'est pas plus judicieux de nommer des classes perso au cas où i
     color: #ffffff; /* Code couleur pour le texte blanc */
 }
   #formulaire label {
-    color: #e2e2e2;
+    color: #f3e5e5;
     /* background-color: rgba(178, 181, 187, 0.3); */
   }
 
@@ -162,4 +162,11 @@ vérifier s'il n'est pas plus judicieux de nommer des classes perso au cas où i
         background-color: rgba(226, 226, 226); 
         box-shadow: 0px 5px 10px #bf7113; /* Conservez votre ombre si nécessaire */
     }
+
+    .navbar-nav {
+      margin-left: auto; /* Aligne les éléments du menu à droite */
   }
+
+  .navbar-toggler {
+      margin-left: auto; /* Aligne le bouton de menu à droite */
+  }  }

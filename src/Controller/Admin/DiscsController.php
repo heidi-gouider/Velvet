@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Repository\DiscRepository;
+use App\Entity\Disc;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -16,11 +17,10 @@ class DiscsController extends AbstractController
     public function __construct(DiscRepository $discRepo)
     {
         $this->discRepo = $discRepo;
-
     }
 
     #[Route('/', name: 'index')]
-        // Exemple d'annotation de sécurité
+    // Exemple d'annotation de sécurité
     // #[IsGranted('ROLE_ADMIN')] 
     public function index(): Response
     {
@@ -31,5 +31,35 @@ class DiscsController extends AbstractController
             'discs' => $discs,
 
         ]);
+    }
+
+    // test de modif nombre de disques
+
+    #[Route('/retirer/{id}', name: 'retirer')]
+    public function retirer(disc $discs)
+    {
+
+        // récuperer l'id du disc
+        $id = $discs->getId();
+
+
+        return $this->redirectToRoute('discs_index');
+    }
+
+    #[Route('/supprimer/{id}', name: 'supprimer')]
+    public function supprimer(disc $disc)
+    {
+        $id = $disc->getId();
+
+        return $this->redirectToRoute('panier_index');
+        // return $this->render('panier/index.html.twig', [
+        //     'controller_name' => 'PanierController',
+        // ]);
+    }
+
+    #[Route('/valider', name: 'valider')]
+    public function valider()
+    {
+        return $this->redirectToRoute('panier_index');
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\DiscRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: DiscRepository::class)]
@@ -28,8 +30,21 @@ class Disc
     #[ORM\Column(type: 'decimal', precision: 10, scale: 2, nullable: true)]
     private ?string $prix = null;
 
+
     #[ORM\Column(length: 255)]
     private ?string $label = null;
+
+    #[ORM\Column(length: 255)]
+    private ?int $quantite = null;
+
+
+    #[ORM\OneToMany(mappedBy: 'disc', targetEntity: Detail::class)]
+    private Collection $details;
+
+    public function __construct()
+    {
+        $this->details = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -84,6 +99,19 @@ class Disc
         return $this;
     }
 
+    public function getQuantite(): ?int
+    {
+        return $this->quantite;
+    }
+
+    public function setQuantite(int $quantite): static
+    {
+        $this->quantite = $quantite;
+
+        return $this;
+    }
+
+
     public function getArtist(): ?Artist
     {
         return $this->artist;
@@ -92,6 +120,54 @@ class Disc
     public function setArtist(?Artist $artist): static
     {
         $this->artist = $artist;
+
+        return $this;
+    }
+
+     /**
+     * @ORM\Column(type="integer")
+     */
+    private $sales;
+
+    public function getSales(): ?int
+    {
+        return $this->sales;
+    }
+
+    public function setSales(?int $sales): static
+    {
+        $this->sales = $sales;
+
+        return $this;
+    }
+
+
+    /**
+     * @return Collection|Detail[]
+     */
+    public function getDetails(): Collection
+    {
+        return $this->details;
+    }
+
+    public function addDetail(Detail $detail): self
+    {
+        if (!$this->details->contains($detail)) {
+            $this->details[] = $detail;
+            $detail->setDisc($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDetail(Detail $detail): self
+    {
+        if ($this->details->removeElement($detail)) {
+            // set the owning side to null (unless already changed)
+            if ($detail->getDisc() === $this) {
+                $detail->setDisc(null);
+            }
+        }
 
         return $this;
     }

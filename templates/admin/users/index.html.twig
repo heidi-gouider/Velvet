@@ -8,13 +8,44 @@
 
 		<h2 class="fst-italic text-white text-center">Liste des utilisateurs</h2>
 
-		<div class="container mx-auto text-white mt-5" id="formulaire">
-        {# barre de nav pour l'admin #}
-        {% include "partials/adminnav.html.twig" %}
-        
-<main class="col-9 border border-light bg-light p-3">
-			<div class="row text-center"></div>
+		<div
+			class="container mx-auto mt-5" id="formulaire">
+			{# barre de nav pour l'admin #}
+			<div class="row text-center">
+
+				{% include "partials/adminnav.html.twig" %}
+
+				{# <main class="col-9 border border-light bg-light p-3"> #}
+				<main
+					class="col-9 border p-3">
+					{# <div class="row text-center"> #}
+					<table class="table text-white">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Mail</th>
+								<th>Role</th>
+							</tr>
+						</thead>
+
+						<tbody>
+
+							{# Attention à ne pas oublier d'injecter le repo user dans la fonction du controller concerné!!! #}
+							{% for  user in users %}
+								<div class="col-md-6 mb-4">
+									<tr>
+										<td>{{ user.id }}</td>
+										<td>{{ user.email }}</td>
+										<td>{{ user.roles | join(', ')}}</td>
+
+									</tr>
+								</div>
+							{% endfor %}
+						</tbody>
+					</table>
+
+				</div>
+			</main>
 		</div>
 	</div>
-
 {% endblock %}

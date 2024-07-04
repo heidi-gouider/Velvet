@@ -9,71 +9,58 @@
 		<h2 class="fst-italic text-white text-center">Listes des Artistes</h2>
 
 		<div class="container mx-auto mt-5">
-			<main
-            	class="row text-center">
+			<main class="row text-center">
 				{# class="col-9 border border-light bg-light p-3"> #}
-
 				{# barre de nav pour l'admin #}
 				{% include "partials/adminnav.html.twig" %}
 
-				<div
-            	{# class="row text-center"> #}
-                    class="col-9 border border-light bg-light p-3"> 
-                    <table class="table">
-                    <thead>
-                    <tr>
-                    <th>Id</th>
-                    <th>Nom</th>
-                    </tr>
-                    </thead>
+					<div {# class="row text-center"> #} class="col-9 border border-light bg-light p-3"> <table class="table">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Nom</th>
+							</tr>
+						</thead>
 
-                    <tbody>
+						<tbody>
 
-					{# Attention à ne pas oublier d'injecter le repo artist dans la fonction du controller concerné!!! #}
-					{% for  artist in artists %}
-						<div
-							class="col-md-6 mb-4">
-							<a href="{{ path('app_discs_artist', {'artist_id': artist.id}) }}">
-								{{ artist.name}}
-							</a>
-                            <tr>   
-                            <td>{{ artist.id }}</td>
-                            <td>{{ artist.name }}</td>
-                            </tr>
-						</div>
+							{# Attention à ne pas oublier d'injecter le repo artist dans la fonction du controller concerné!!! #}
+							{% for  artist in artists %}
+								<div
+									class="col-md-6 mb-4">
+									{# <a href="{{ path('app_discs_artist', {'artist_id': artist.id}) }}">
+																	{{ artist.name}}
+																</a> #}
+									<tr>
+										<td>{{ artist.id }}</td>
+										<td>{{ artist.name }}</td>
+									</tr>
+								</div>
 
 
-						{# $count++; // Incrémentez le compteur
-					 // Si vous avez affiché 2 disques, fermez la rangée actuelle et commencez une nouvelle rangée
-						if ($count % 2 == 0) {
-						echo '</div><div class="row">';
-						} #}
-						{# {% if loop.index is even %} #}
-					{# </div> #}
-					{# {% endif %} #}
-					{% endfor %}
-</tbody>
-                    </table>
-                                        {# <h2>Nombre d'artistes trouvés :
+							{% endfor %}
+						</tbody>
+					</table>
+					{# <h2>Nombre d'artistes trouvés :
+					
+											{{ artists | length }}</h2>
+										{% for artist in artists %} #}
+				{# <span class="d-block"> #}
+					{# <div
+												class="col-md-6 mb-4">
+					
+												{{ artist.name |upper }}
+												-
+					                        </div> #}
 
-						{{ artists | length }}</h2>
-					{% for artist in artists %} #}
-						{# <span class="d-block"> #}
-                        {# <div
-							class="col-md-6 mb-4">
+					{# <div
+												class="col-md-6 mb-4">
+					
+					                            <b class="btn-primary p-1">{{ artist.discs | length }}</b>
+												disques
+					                            </div> #}
 
-							{{ artist.name |upper }}
-							-
-                        </div> #}
-
-						{# <div
-							class="col-md-6 mb-4">
-
-                            <b class="btn-primary p-1">{{ artist.discs | length }}</b>
-							disques
-                            </div> #}
-
-						{# </span> #}
+					{# </span> #}
 					{# {% endfor %} #}
 
 				</div>

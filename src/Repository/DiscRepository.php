@@ -19,13 +19,16 @@ class DiscRepository extends ServiceEntityRepository
 //    /**
 //     * @return Disc[] Returns an array of Disc objects
 //     */
-//    public function findByExampleField($value): array
+//    public function findTopDiscsVendu(int $limit): array
+//    public function findBySales()
+
 //    {
 //        return $this->createQueryBuilder('d')
-//            ->andWhere('d.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('d.id', 'ASC')
-//            ->setMaxResults(10)
+//            ->select('d', 'SUM(dt.quantite) AS HIDDEN sales')
+//            ->leftjoin('d.details', 'dt')
+//            ->groupBy('d.id')
+        //    ->orderBy('d.sales', 'DESC')
+//            ->setMaxResults(2)
 //            ->getQuery()
 //            ->getResult()
 //        ;

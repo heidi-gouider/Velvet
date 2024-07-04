@@ -124,7 +124,7 @@ class PanierController extends AbstractController
         public function retirer(disc $disc, SessionInterface $session)
         {
 
-            // récuperer l'id du plat
+            // récuperer l'id du disc
             $id = $disc->getId();
             // Obtenez le panier existant à partir de la session ou créez-en un nouveau.
             $panier = $session->get('panier', []);
