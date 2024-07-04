@@ -32,26 +32,39 @@ class DiscsController extends AbstractController
 
         ]);
     }
-
     // test de modif nombre de disques
 
-    #[Route('/retirer/{id}', name: 'retirer')]
-    public function retirer(disc $discs)
+    #[Route('/ajout', name: 'ajout')]
+    public function ajout(): Response
     {
+        $discs = $this->discRepo->findAll();
 
-        // récuperer l'id du disc
-        $id = $discs->getId();
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        return $this->render('admin/discs/index.html.twig', [
+            'discs' => $discs,
 
+        ]);
 
-        return $this->redirectToRoute('discs_index');
     }
+
+
+    // #[Route('/retirer/{id}', name: 'retirer')]
+    // public function retirer(disc $discs)
+    // {
+
+    //     $id = $discs->getId();
+
+
+    //     return $this->redirectToRoute('discs_index');
+    // }
 
     #[Route('/supprimer/{id}', name: 'supprimer')]
     public function supprimer(disc $disc)
     {
+                // récuperer l'id du disc
         $id = $disc->getId();
 
-        return $this->redirectToRoute('panier_index');
+        return $this->redirectToRoute('discs_index');
         // return $this->render('panier/index.html.twig', [
         //     'controller_name' => 'PanierController',
         // ]);
