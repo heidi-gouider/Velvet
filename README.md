@@ -63,7 +63,10 @@ DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
 Créez la base de données et les schémas
 
 bash
-
+Attention pour ce projet j'ai décidé de ne plus me servir des migrations mais 
+d'utiliser composer.json pour automatiser certaines tâches liées à la bdd :
+ Suppression de la base
+ Mis à jour des shémas
 php bin/console doctrine:database:create
 php bin/console doctrine:migrations:migrate
 
@@ -95,7 +98,7 @@ Tests
 
     php bin/phpunit
 
-
+Utilisation de owaspzap pour vérifier les failles de sécurité
 
 ## Utilisation
 

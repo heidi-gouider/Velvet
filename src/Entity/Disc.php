@@ -129,6 +129,9 @@ class Disc
      */
     private $sales;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $vente = null;
+
     public function getSales(): ?int
     {
         return $this->sales;
@@ -168,6 +171,18 @@ class Disc
                 $detail->setDisc(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getVente(): ?int
+    {
+        return $this->vente;
+    }
+
+    public function setVente(?int $vente): static
+    {
+        $this->vente = $vente;
 
         return $this;
     }

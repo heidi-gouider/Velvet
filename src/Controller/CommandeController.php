@@ -6,6 +6,7 @@ use App\Entity\Commande;
 use App\Entity\Detail; 
 use App\Entity\User;
 use App\Repository\DiscRepository;
+use App\Repository\DetailRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -96,6 +97,19 @@ class CommandeController extends AbstractController
 
         return $this->render('panier/commandes.html.twig', [
             'commandes' => $commandes,
+        ]);
+    }
+
+    // je recupère la méthode et le query builder du repo detail 
+    #[Route('/top_discs', name: 'top_discs')]
+    public function topDiscs(DetailRepository $detailRepo): Response
+    {
+        // j'utilise la méthode créer dans le repo findByTopVente()
+        $topDiscs = $detailRepo->findByTopVente();
+
+        // je passe le résultat à ma vue
+        return $this->render('accueil/index.html.twig', [
+            'topDiscs' => $topDiscs,
         ]);
     }
 }

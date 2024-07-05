@@ -9,98 +9,83 @@
 
 		<h2 class="text-white text-center">Bienvenue à Velvet Record</h2>
 		{# pour afficher les disques les plus vendus je vais ajouter une méhode
-												dans mon repo  disc  que je vais appeler dans le controller de la page d'accueil#}
+														dans mon repo  disc  que je vais appeler dans le controller de la page d'accueil#}
 
 		<div class="container">
 			<div class="row mt-5">
-				<div class="col-10 mx-auto">
-					{# <h1>Disques les plus vendus</h1>
-					{% for disc in discs %}
-						<li>{{ disc.title }}</li>
-					{% endfor %}
-					<table>
-						<thead>
-							<tr>
-								<th>Title</th>
-								<th>vendus</th>
-							</tr>
-						</thead>
-						<tbody>
-							{% for result in topDiscsVendu %}
-								<tr>
-									<td>{{ result.title }}</td>
-									<td>{{ result.sales }}</td>
-								</tr>
-							{% endfor %}
-						</tbody>
-					</table> #}
+				<div class="col-10 mx-auto text-white">
+					<h1>Disques les plus vendus</h1>
+					<ul class="text-white">
+						{% for disc in topDiscs %}
+							<div class="card" style="width: 18rem;">
+								<img src="{{ asset('img/' ~ disc.picture) }}" alt="{{ disc.title }}">
+								<div class="card-body">
+									<h5 class="card-title">
+										{{ disc.title }}</h5>
+									<p class="content bg-body">
+										{{ disc.prix}}
+										euros
+									</p>
+								</div>
 
-					{# <ul>
-						{% for disc in topDiscsVendu %}
-							<li>{{ disc.title }}
-								-
-								{{ disc.artist }}</li>
-						{% endfor %}
-					</ul> #}
-					{# <h1>Nombre d'artistes trouvés :
-						{{ artists | length }}</h1>
-					{% for artist in artists %}
-						<span class="d-block">
-							{{ artist.name |upper }}
-							-
-							<b class="btn-primary p-1">{{ artist.discs | length }}</b>
-							disques
-						</span>
-					{% endfor %} #}
+								<li>{{ disc.disc_id }}
+									-
+									{{ disc.quantite_total }}</li>
+								<h2>{{ disc.disc_id }}</h2>
+							{% endfor %}
+						</ul>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="mt-5">
-			<h2 class="text-white text-center">Notre Catalogue</h2>
 
-			<li class="nav-item text-orange">
-				<a class="nav-link text-center" href="{{ path('app_artists') }}">Découvrir nos  Artistes</a>
-			</li>
-			<li class="nav-item text-orange">
-				<a class="nav-link text-center" href="{{ path('app_discs') }}">Tous nos  Albums</a>
-			</li>
-
-
+			{# <h1>Nombre d'artistes trouvés :
+									{{ artists | length }}</h1>
+								{% for artist in artists %}
+									<span class="d-block">
+										{{ artist.name |upper }}
+										-
+										<b class="btn-primary p-1">{{ artist.discs | length }}</b>
+										disques
+									</span>
+								{% endfor %} #}
 		</div>
 	</div>
+</div>
+<div class="mt-5">
+	<h2 class="text-white text-center">Notre Catalogue</h2>
+
+	<li class="nav-item text-orange">
+		<a class="nav-link text-center" href="{{ path('app_artists') }}">Découvrir nos  Artistes</a>
+	</li>
+	<li class="nav-item text-orange">
+		<a class="nav-link text-center" href="{{ path('app_discs') }}">Tous nos  Albums</a>
+	</li>
 
 
-	{# <div class="container">
-									<div class="row mt-5">
-										<div class="col-10 mx-auto">
-											<h1>Nombre d'artistes trouvés :
-												{{ artists | length }}</h1> #}
-
-
-	{# <h1>Liste des artistes</h1>
-											{% for artist in artists %}
-												<span class="d-block">
-													{{ artist.getName() |upper }}
-													-
-													<b class="btn-primary p-1">
-														{{ artist.getDiscs | length }}
-													</b>
-													disques
-												</span>
-												{% endfor %}
-							
-							
-												{% for disc in artists.discs %}
-													<div>
-														{{disc.getTitle }}
-													</div>
-												{% else %}
-													pas de disque
-												{% endfor %}
+</div></div>{# <div class="container">
+										<div class="row mt-5">
+											<div class="col-10 mx-auto">
+												<h1>Nombre d'artistes trouvés :
+													{{ artists | length }}</h1> #}{# <h1>Liste des artistes</h1>
+												{% for artist in artists %}
+													<span class="d-block">
+														{{ artist.getName() |upper }}
+														-
+														<b class="btn-primary p-1">
+															{{ artist.getDiscs | length }}
+														</b>
+														disques
+													</span>
+													{% endfor %}
+								
+								
+													{% for disc in artists.discs %}
+														<div>
+															{{disc.getTitle }}
+														</div>
+													{% else %}
+														pas de disque
+													{% endfor %}
+											</div>
 										</div>
-									</div>
-								</div> #}
-	{% include "partials/footer.php" %}
-
-
-{% endblock %}
+									</div> #}{% include "partials/footer.php" %}{% endblock %}
