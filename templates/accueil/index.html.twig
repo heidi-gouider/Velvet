@@ -9,86 +9,38 @@
 
 		<h2 class="text-white text-center">Bienvenue à Velvet Record</h2>
 		{# pour afficher les disques les plus vendus je vais ajouter une méhode
-														dans mon repo  disc  que je vais appeler dans le controller de la page d'accueil#}
+																						dans mon repo  disc  que je vais appeler dans le controller de la page d'accueil#}
 
 		<div class="container">
 			<div class="row mt-5">
-				<div class="col-10 mx-auto text-white">
-					<h1>Nos top ventes</h1>
-					<ul class="text-white">
+				<div class="col-10 mx-auto">
+					<h2 class="text-white">Nos top ventes</h2>
+					<div class="d-flex flex-wrap justify-content-around">
 						{% for disc in topDiscs %}
-						<li>
-                    Disque ID: {{ disc.disc_id }} - Quantité vendue: {{ disc.quantite_total }}
-                </li>
-							<div class="card" style="width: 18rem;">
-								<img src="{{ asset('img/' ~ disc.picture) }}" alt="{{ disc.title }}">
+							<div class="card m-2" style="width: 15rem;">
+								<img class="card-img-top zoom-img" src="{{ asset('img/' ~ disc.picture) }}" alt="">
 								<div class="card-body">
-									<h5 class="card-title">
-										{{ disc.title }}</h5>
-									<p class="content bg-body">
-										{{ disc.prix}}
-										euros
-									</p>
+									<h5
+										class="card-title">
+										{# {{ disc.title }} #}
+										{{ disc.artist_name }}</h5>
 								</div>
-
-								{# <li>{{ disc.disc_id }}
-									-
-									{{ disc.quantite_total }}</li>
-								<h2>{{ disc.disc_id }}</h2> #}
-							{% endfor %}
-						</ul>
+							</div>
+						{% endfor %}
 					</div>
 				</div>
 			</div>
 
-			{# <h1>Nombre d'artistes trouvés :
-									{{ artists | length }}</h1>
-								{% for artist in artists %}
-									<span class="d-block">
-										{{ artist.name |upper }}
-										-
-										<b class="btn-primary p-1">{{ artist.discs | length }}</b>
-										disques
-									</span>
-								{% endfor %} #}
+		</div>
+		<div class="mt-5">
+			<h2 class="text-white text-center">Notre Catalogue</h2>
+
+			<li class="nav-item text-orange">
+				<a class="nav-link text-center" href="{{ path('app_artists') }}">Découvrir nos  Artistes</a>
+			</li>
+			<li class="nav-item text-orange">
+				<a class="nav-link text-center" href="{{ path('app_discs') }}">Tous nos  Albums</a>
+			</li>
 		</div>
 	</div>
-</div>
-<div class="mt-5">
-	<h2 class="text-white text-center">Notre Catalogue</h2>
-
-	<li class="nav-item text-orange">
-		<a class="nav-link text-center" href="{{ path('app_artists') }}">Découvrir nos  Artistes</a>
-	</li>
-	<li class="nav-item text-orange">
-		<a class="nav-link text-center" href="{{ path('app_discs') }}">Tous nos  Albums</a>
-	</li>
-
-
-</div></div>{# <div class="container">
-										<div class="row mt-5">
-											<div class="col-10 mx-auto">
-												<h1>Nombre d'artistes trouvés :
-													{{ artists | length }}</h1> #}{# <h1>Liste des artistes</h1>
-												{% for artist in artists %}
-													<span class="d-block">
-														{{ artist.getName() |upper }}
-														-
-														<b class="btn-primary p-1">
-															{{ artist.getDiscs | length }}
-														</b>
-														disques
-													</span>
-													{% endfor %}
-								
-								
-													{% for disc in artists.discs %}
-														<div>
-															{{disc.getTitle }}
-														</div>
-													{% else %}
-														pas de disque
-													{% endfor %}
-											</div>
-										</div>
-									</div> #}{% include "partials/footer.php" %}{% endblock %}
+{% include "partials/footer.php" %}{% endblock %}

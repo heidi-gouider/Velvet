@@ -22,13 +22,13 @@ class AccueilController extends AbstractController
     //N'oubliez pas d'importer vos respositories (les lignes "use..." en haut de la page)
     private $artistRepo;
     private $discRepo;
-    // private $em;
+    private $detailRepo;
 
-    public function __construct(ArtistRepository $artistRepo, DiscRepository $discRepo)
+    public function __construct(ArtistRepository $artistRepo, DiscRepository $discRepo, DetailRepository $detailRepo)
     {
         $this->artistRepo = $artistRepo;
         $this->discRepo = $discRepo;
-        // $this->em = $em;
+        $this->detailRepo = $detailRepo;
 
     }
 
@@ -50,7 +50,7 @@ class AccueilController extends AbstractController
         // dump($artists);
 
         // $topDiscsVendu = $this->discRepo->findByTopDiscsVendu(2);
-        // $topDiscsVendu = $this->discRepo->findBySales(); 
+        $topDiscs = $this->detailRepo->findByTopVente(); 
 
         // $user = $this->security->getUser();
 
@@ -59,7 +59,7 @@ class AccueilController extends AbstractController
             'discs' => $disc,
              //on va envoyer à la vue notre variable qui stocke un tableau d'objets $artistes (c'est-à-dire tous les artistes trouvés dans la base de données)
              'artists' => $artists,
-            //  'topDiscsVendu' => $topDiscsVendu,
+             'topDiscs' => $topDiscs,
             //  'sales' => $sales
         ]);
     }
@@ -99,7 +99,7 @@ class AccueilController extends AbstractController
     {
         // je récupère la categorie correspondant à l'id
         $artist = $this->artistRepo->find($artist_id);
-        dump($artist);
+        // dump($artist);
 
         $discs = $artist->getDiscs();
         return $this->render('accueil/discsArtist.html.twig', [
@@ -110,13 +110,13 @@ class AccueilController extends AbstractController
     }
 
         // je recupère la méthode et le query builder du repo detail 
-        #[Route('/top_discs', name: 'top_discs')]
+        // #[Route('/top_discs', name: 'top_discs')]
         #[Route('/', name: 'top_discs')]
 
         public function topDiscs(DetailRepository $detailRepo): Response
         {
             // j'utilise la méthode créer dans le repo findByTopVente()
-            $topDiscs = $detailRepo->findByTopVente();
+            $topDiscs = $this->detailRepo->findByTopVente();
     
             // je passe le résultat à ma vue
             return $this->render('accueil/index.html.twig', [

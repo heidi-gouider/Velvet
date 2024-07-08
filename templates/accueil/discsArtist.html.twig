@@ -52,15 +52,18 @@
 								{# <button type="button" class=" d-block mt-5 btn btn-success mx-auto mb-3" data-bs-toggle="modal" data-bs-target="#modal{{ plat.id }}">Ajouter au panier</button>
 																		</button> #}
 							</div>
+														{% if loop.index is even %}
+							<div class="row"> {% endif %}
+						</div>
+
 						</form>
 						{# </div> #}
 						{# </div> #}
 
 						{# Si vous avez affiché 2 cartes, fermez la rangée actuelle et commencez une nouvelle rangée #}
-						{# <i class="bi bi-basket"></i> #}
-							{% if loop.index is even %}
+							{# {% if loop.index is even %}
 							<div class="row"> {% endif %}
-						</div>
+						</div> #}
 					{% endfor %}
 				{# </div> #}
 				<!-- /// LA MODAL D'AJOUT AU PANIER/// -->

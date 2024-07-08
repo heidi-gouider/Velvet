@@ -45,8 +45,16 @@ vérifier s'il n'est pas plus judicieux de nommer des classes perso au cas où i
       z-index: 1;
       /* filter: blur(5px); */
     }
-    #images {
-      background-color: #50565c;
+    .zoom-img {
+      /* background-color: #50565c; */
+      transition: transform 0.3s ease-in-out;
+    }
+    .zoom-img:hover {
+      transform: scale(1.1);
+      /* translate: 1s; */
+      border: none;
+      transition: 1s ease-in-out;
+      /* border-radius: 50%; */
     }
     /* .contenu::before {
       content: "";

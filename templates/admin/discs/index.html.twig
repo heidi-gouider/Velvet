@@ -53,7 +53,7 @@
 										{# <td>{{ disc.artist.id }}</td> #}
 										<td>{{ disc.artist.name }}</td>
 										<td>{{ disc.quantite }}</td>
-										<td><a href="#">Modifier</a></td>
+										<td><a href="{{ path('admin_discs_edit', {id: disc.id})}}">Modifier</a></td>
 									</tr>
 								</div>
 							{% endfor %}

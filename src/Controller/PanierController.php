@@ -184,7 +184,7 @@ class PanierController extends AbstractController
             $detail = new Detail();
             $detail->setCommande($commande);
             $detail->setDisc($disc);
-            $detail->setQuantite($quantite);
+            $detail->setQuantity($quantite);
 
             $em->persist($detail);
 

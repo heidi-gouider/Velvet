@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Velvet
+{% endblock %}
+
+{% block body %}
+	<div class="contenu">
+
+		<h2 class="text-white text-center">Administration</h2>
+
+		<div
+			class="container mx-auto mt-5" id="formulaire">
+			{# barre de nav pour l'admin #}
+			<div class="row text-center">
+
+				{% include "partials/adminnav.html.twig" %}
+
+				{# <main class="col-9 border border-light bg-light p-3"> #}
+				<main class="col-9 border p-3 mt-5">
+					<h1 class="text-white">Ajouter un nouvel artiste</h1>
+
+					{# <div class="col-9 border p-3 mt-5">
+						{{ form_start(discForm) }}
+					</div> #}
+					<div class="row">
+                                            						{{ form_start(artistForm) }}
+
+						<div class="col-9 border p-3 mx-auto mt-5">
+							{{ form_row(artistForm.name) }}
+						</div>
+						{# <div class="col-9 border p-3 mx-auto mb-2">
+							{{ form_row(discForm.picture) }}
+						</div>
+						</div> #}
+						<div>
+							{{ form_widget(artistForm) }}
+						{# <a href="{{ path('admin_artists_ajout') }}" class="btn btn-primary">Ajouter</a> #}
+
+						<button type="submit" href="{{ path('admin_artists_ajout') }}" class="btn btn-primary mt-5">Ajouter</button>
+                        						</div>
+
+						{{ form_end(artistForm) }}
+					</div>
+
+				{# <div class="row text-center"> #}
+					{# <table class="table text-white">
+																<thead>
+																	<tr>
+																		<th>Id</th>
+																		<th>Nom</th>
+																		<th>Image</th>
+																		<th>Label</th>
+																		<th>Prix unitaire</th> #}
+					{# <th>Id artist</th> #}
+					{# <th>Nom artist</th>
+																		<th>Quantité</th>
+																		<th>Actions</th>
+																	</tr>
+																</thead>
+										
+																<tbody> #}
+
+					{# Attention à ne pas oublier d'injecter le repo artist dans la fonction du controller concerné!!! #}
+					{# </tbody>
+															</table>  #}
+				</div>
+			</main>
+		</div>
+	</div>
+{% endblock %}

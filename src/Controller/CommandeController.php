@@ -57,7 +57,7 @@ class CommandeController extends AbstractController
       // On crée le détail de commande
       $detail->setDisc($disc);
     //   $detail->setTotal($prix);
-      $detail->setQuantite($quantite);
+      $detail->setQuantity($quantite);
       $commande->addDetail($detail);
 
       $total += $prix * $quantite;

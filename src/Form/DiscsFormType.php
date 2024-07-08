@@ -14,14 +14,16 @@ class DiscsFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title')
+            ->add('title', options:['label' => 'Titre'])
             ->add('picture')
             ->add('prix')
             ->add('label')
             ->add('quantite')
             ->add('artist', EntityType::class, [
                 'class' => Artist::class,
-                'choice_label' => 'id',
+                // 'choice_label' => 'id',
+                'choice_label' => 'name',
+
             ])
         ;
     }

@@ -20,11 +20,11 @@ class DiscRepository extends ServiceEntityRepository
 //     * @return Disc[] Returns an array of Disc objects
 //     */
 //    public function findTopDiscsVendu(int $limit): array
-//    public function findBySales()
+//    public function findByTopVente()
 
 //    {
-//        return $this->createQueryBuilder('d')
-//            ->select('d', 'SUM(dt.quantite) AS HIDDEN sales')
+//        return $this->createQueryBuilder('detail')
+//            ->select('detail', 'SUM(dt.quantite) AS HIDDEN sales')
 //            ->leftjoin('d.details', 'dt')
 //            ->groupBy('d.id')
         //    ->orderBy('d.sales', 'DESC')

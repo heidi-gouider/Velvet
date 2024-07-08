@@ -29,7 +29,16 @@ class DetailRepository extends ServiceEntityRepository
         $rsm = new ResultSetMapping();
         $rsm->addScalarResult('disc_id', 'disc_id');
         $rsm->addScalarResult('quantite_total', 'quantite_total');
-$query = $this->entityManager->createNativeQuery('SELECT disc_id, SUM(quantite) AS quantite_total FROM detail GROUP By disc_id
+        $rsm->addScalarResult('picture', 'picture');
+        $rsm->addScalarResult('title', 'title');
+        $rsm->addScalarResult('artist_name', 'artist_name');
+
+        // attention avec cette méthode à la sécurité   passer par un fichier DTO
+        // sinon préférer le queryBuilder!!!
+$query = $this->entityManager->createNativeQuery('SELECT disc_id, SUM(quantity) AS quantite_total, picture, title, artist.name as artist_name FROM detail 
+JOIN disc ON detail.disc_id = disc.id
+JOIN artist ON disc.artist_id = artist.id
+GROUP By disc_id, picture, title, artist.name
 ORDER BY quantite_total DESC LIMIT 3', $rsm);
 // $query->setParameter(1, 'romanb');
 
