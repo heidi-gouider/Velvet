@@ -101,11 +101,18 @@ class CommandeController extends AbstractController
     }
 
     // je recupère la méthode et le query builder du repo detail 
-    #[Route('/top_discs', name: 'top_discs')]
-    public function topDiscs(DetailRepository $detailRepo): Response
+    // #[Route('/top_discs', name: 'top_discs')]
+    #[Route('/', name: 'top_discs')]
+private $detailRepo;
+public function __construct(DetailRepository $detailRepo)
+{
+    $this->detailRepo = $detailRepo;
+}
+    public function topDiscs(): Response
     {
+    
         // j'utilise la méthode créer dans le repo findByTopVente()
-        $topDiscs = $detailRepo->findByTopVente();
+        $topDiscs = $this->detailRepo->findByTopVente();
 
         // je passe le résultat à ma vue
         return $this->render('accueil/index.html.twig', [

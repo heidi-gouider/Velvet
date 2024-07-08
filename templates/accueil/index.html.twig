@@ -14,9 +14,12 @@
 		<div class="container">
 			<div class="row mt-5">
 				<div class="col-10 mx-auto text-white">
-					<h1>Disques les plus vendus</h1>
+					<h1>Nos top ventes</h1>
 					<ul class="text-white">
 						{% for disc in topDiscs %}
+						<li>
+                    Disque ID: {{ disc.disc_id }} - Quantité vendue: {{ disc.quantite_total }}
+                </li>
 							<div class="card" style="width: 18rem;">
 								<img src="{{ asset('img/' ~ disc.picture) }}" alt="{{ disc.title }}">
 								<div class="card-body">
@@ -28,10 +31,10 @@
 									</p>
 								</div>
 
-								<li>{{ disc.disc_id }}
+								{# <li>{{ disc.disc_id }}
 									-
 									{{ disc.quantite_total }}</li>
-								<h2>{{ disc.disc_id }}</h2>
+								<h2>{{ disc.disc_id }}</h2> #}
 							{% endfor %}
 						</ul>
 					</div>

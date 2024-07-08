@@ -27,8 +27,8 @@ class DetailRepository extends ServiceEntityRepository
     public function findByTopVente(): array
     {
         $rsm = new ResultSetMapping();
-// build rsm here
-
+        $rsm->addScalarResult('disc_id', 'disc_id');
+        $rsm->addScalarResult('quantite_total', 'quantite_total');
 $query = $this->entityManager->createNativeQuery('SELECT disc_id, SUM(quantite) AS quantite_total FROM detail GROUP By disc_id
 ORDER BY quantite_total DESC LIMIT 3', $rsm);
 // $query->setParameter(1, 'romanb');

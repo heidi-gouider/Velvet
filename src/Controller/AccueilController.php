@@ -111,6 +111,8 @@ class AccueilController extends AbstractController
 
         // je recupère la méthode et le query builder du repo detail 
         #[Route('/top_discs', name: 'top_discs')]
+        #[Route('/', name: 'top_discs')]
+
         public function topDiscs(DetailRepository $detailRepo): Response
         {
             // j'utilise la méthode créer dans le repo findByTopVente()
