@@ -29,11 +29,27 @@ class DiscsController extends AbstractController
     // #[IsGranted('ROLE_ADMIN')] 
     public function index(): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $discs = $this->discRepo->findAll();
 
+    // Utilisation de getQuantiteVendu pour obtenir la quantité vendue du disque
+    // $quantiteVendu = $this->discRepo->getQuantiteVendu($discs);
+     // Tableau pour stocker les quantités vendues de chaque disque
+     $quantitieVendu = [];
+
+     // Parcourir chaque disque pour obtenir la quantité vendue
+    foreach ($discs as $disc) {
+        $quantiteVendu[$disc->getId()] = $this->discRepo->getQuantiteVendu($disc);
+        // $quantiteVendu = $this->discRepo->getQuantiteVendu($disc);
+        // $quantitieVendu[$disc->getId()] = $quantiteVendu;
+        // $quantitiesSold[$disc->getId()] = $quantiteVendu;
+
+    }
         return $this->render('admin/discs/index.html.twig', [
             'controller_name' => 'DiscsController',
             'discs' => $discs,
+            'quantiteVendu' => $quantiteVendu,
 
         ]);
     }
@@ -61,6 +77,7 @@ if($discForm->isSubmitted() && $discForm->isValid()){
     // pour mes prix qui seront en entier(je devrai les x100)
     // $prix = $disc->getPrix() *100;
     // $disc->setPrix($prix);
+    // $disc->setVente($disc->getVente() + $someValue); 
     // On définit le dossier de destination
     $folder = 'discs';
 
@@ -135,16 +152,21 @@ return $this->render('admin/discs/ajout.html.twig',[
             $this->addFlash('success', 'Produit modifié avec succès');
 
             // On redirige
-            return $this->redirectToRoute('admin_discs_index');
-        
+            // return $this->redirectToRoute('admin_discs_edit');
 
-
+            
+    
         return $this->render('admin/discs/edit.html.twig',[
             'discForm' => $discForm->createView(),
-            'disc' => $disc
+            // 'disc' => $disc,
         ]);
-
     }
+    
+    
+    // return $this->redirectToRoute('admin_discs_index');
+
+
+
 
     // #[Route('/retirer/{id}', name: 'retirer')]
     // public function retirer(disc $discs)
@@ -173,4 +195,5 @@ return $this->render('admin/discs/ajout.html.twig',[
     {
         return $this->redirectToRoute('panier_index');
     }
+
 }

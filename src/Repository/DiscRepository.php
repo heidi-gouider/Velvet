@@ -20,19 +20,35 @@ class DiscRepository extends ServiceEntityRepository
 //     * @return Disc[] Returns an array of Disc objects
 //     */
 //    public function findTopDiscsVendu(int $limit): array
-//    public function findByTopVente()
+   public function getQuantiteVendu(Disc $disc): int
+   {
+    $quantiteVendu = 0;
+    // $qb = $this->createQueryBuilder('d');
+       return (int) $this->createQueryBuilder('d')
+           ->select('SUM(detail.quantity)')
+           ->leftjoin('d.details', 'detail')
+           ->where('d.id = :disc_id')
+           ->setParameter('disc_id', $disc->getId())
+           ->getQuery()
+        //    ->getResult();
+        // Cette méthode est utilisée lorsque l'on attend un seul résultat scalaire 
+            ->getSingleScalarResult(); 
+        // (un nombre, une chaîne, etc.) à partir de la requête
+        // $result = $this->getQuery()->getSingleScalarResult();
+        // $quantiteVendu = $this->getQuery()->getSingleScalarResult();
 
-//    {
-//        return $this->createQueryBuilder('detail')
-//            ->select('detail', 'SUM(dt.quantite) AS HIDDEN sales')
-//            ->leftjoin('d.details', 'dt')
-//            ->groupBy('d.id')
-        //    ->orderBy('d.sales', 'DESC')
-//            ->setMaxResults(2)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+// Vérifier si $quantiteVendu est null
+// if ($quantiteVendu === null) {
+    // return 0; 
+    // Retourner 0 si aucun résultat n'est trouvé
+// }
+// Convertir et retourner en entier
+// return (int) $quantiteVendu; 
+    // Si $quantiteVendu est null (aucun enregistrement trouvé), retourner 0
+    return $quantiteVendu ?? 0;
+    // Retourne 0 si $result est null
+    // return (int) $result ?? 0;
+   }
 
 //    public function findOneBySomeField($value): ?Disc
 //    {

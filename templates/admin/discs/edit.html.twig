@@ -1,14 +1,56 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Administration des produits{% endblock %}
+{% block title %}Administration des produits
+{% endblock %}
 
 {% block body %}
-    <main class="container">
-        <section class="row">
-            <div class="col-12">
-                <h1>Modifier un produit</h1>
-                {# {% include "admin/discs/_form.html.twig" with {'button_label': 'Modifier'} %} #}
-            </div>
-        </section>
-    </main>
-{% endblock %}
+	<div class="contenu">
+
+		<main class="container">
+			<section class="row">
+				<div class="col-12 text-white">
+					<h1>Modifier un produit</h1>
+					{# {% include "admin/discs/_form.html.twig" with {'button_label': 'Modifier'} %} #}
+					<div class="col-9 border p-3 mt-5">
+						{{ form_start(discForm) }}
+					</div>
+					<div class="row">
+						<div class="col-9 border p-3 mx-auto mt-5">
+							{{ form_row(discForm.title) }}
+						</div>
+						<div class="col-9 border p-3 mx-auto mb-2">
+							{{ form_row(discForm.picture) }}
+						</div>
+						<div class="col-9 border p-3 mx-auto mb-2">
+							{{ form_row(discForm.prix) }}
+						</div>
+						<div class="col-9 border p-3 mx-auto mb-2">
+							{{ form_row(discForm.label) }}
+						</div>
+						<div class="col-9 border p-3 mx-auto mb-2">
+							{{ form_row(discForm.quantite) }}
+						</div>
+						<div class="col-9 border p-3 mx-auto mb-2">
+							{{ form_row(discForm.year) }}
+						</div>
+						<div class="col-9 border p-3 mx-auto mb-2">
+							{{ form_row(discForm.genre) }}
+						</div>
+
+						<div>
+							{{ form_widget(discForm) }}
+							{# </div> #}
+							{# <a href="{{ path('admin_discs_edit') }}" class="btn btn-primary">Ajouter</a> #}
+								<button type="submit"  href="{{ path('admin_discs_index') }}"  class="btn btn-primary mt-5"> Modifier</button>
+                                <a   href="{{ path('admin_discs_index') }}"  class="btn btn-primary mt-5"> Retour</a>
+
+						</div>
+
+						{{ form_end(discForm) }}
+					</div>
+
+				</div>
+			</section>
+		</main>
+        </div>
+	{% endblock %}

@@ -24,11 +24,19 @@ class Disc
     #[ORM\ManyToOne(inversedBy: 'discs')]
     private ?Artist $artist = null;
 
+    #[ORM\Column(length:255)]
+    private ?int $year = null;
+
+    #[ORM\Column(length:255)]
+    private ?string $genre = null;
+
     // #[ORM\Column(type: 'decimal', precision: 10, scale: 2, nullable: true)]
     // private ?float $prix = null;
 
-    #[ORM\Column(type: 'decimal', precision: 10, scale: 2, nullable: true)]
-    private ?string $prix = null;
+    // #[ORM\Column(type: 'decimal', precision: 10, scale: 2, nullable: true)]
+    // private ?string $prix = null;
+    #[ORM\Column(type: 'integer', precision: 10, nullable: true)]
+    private ?int $prix = null;
 
 
     #[ORM\Column(length: 255)]
@@ -74,6 +82,31 @@ class Disc
 
         return $this;
     }
+
+    public function getYear(): ?string
+    {
+        return $this->year;
+    }
+
+    public function setGenre(string $genre): static
+    {
+        $this->genre = $genre;
+
+        return $this;
+    }
+
+    public function getGenre(): ?string
+    {
+        return $this->genre;
+    }
+
+    public function setYear(string $year): static
+    {
+        $this->year = $year;
+
+        return $this;
+    }
+
 
     public function getLabel(): ?string
     {
@@ -127,19 +160,20 @@ class Disc
      /**
      * @ORM\Column(type="integer")
      */
-    private $sales;
+    // private $sales;
+    // private $vente;
 
     #[ORM\Column(nullable: true)]
     private ?int $vente = null;
 
-    public function getSales(): ?int
+    public function getVente(): ?int
     {
-        return $this->sales;
+        return $this->vente;
     }
 
-    public function setSales(?int $sales): static
+    public function setVente(?int $vente): static
     {
-        $this->sales = $sales;
+        $this->vente = $vente;
 
         return $this;
     }
@@ -175,17 +209,17 @@ class Disc
         return $this;
     }
 
-    public function getVente(): ?int
-    {
-        return $this->vente;
-    }
+    // public function getVente(): ?int
+    // {
+    //     return $this->vente;
+    // }
 
-    public function setVente(?int $vente): static
-    {
-        $this->vente = $vente;
+    // public function setVente(?int $vente): static
+    // {
+    //     $this->vente = $vente;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
    
 }

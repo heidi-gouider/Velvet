@@ -27,9 +27,11 @@
 								<th>Image</th>
 								<th>Label</th>
 								<th>Prix unitaire</th>
-								{# <th>Id artist</th> #}
 								<th>Nom artist</th>
-								<th>Quantité</th>
+								<th>Quantité en stock</th>
+								<th>Quantité vendue</th>
+								<th>Année</th>
+								<th>Genre</th>
 								<th>Actions</th>
 							</tr>
 						</thead>
@@ -40,20 +42,45 @@
 							{% for  disc in discs %}
 								<div
 									class="col-md-6 mb-4">
-									{# <a href="{{ path('app_discs_artist', {'artist_id': artist.id}) }}">
-																																																														{{ disc.title}}
-																																																													</a> #}
+									{# <a href="{{ path('app_discs_artist', {'artist_id': artist.id}) }}">																																																																																															{{ disc.title}}
+																																																																																																										</a> #}
 									<tr>
 										<td>{{ disc.id }}</td>
 										<td>{{ disc.title }}</td>
-										{# <td>{{ disc.picture }}</td> #}
-										<td><img src="{{ asset('img/' ~ disc.picture) }}" alt="{{ disc.title }}"style="width: 100px; height: auto;"></td>
+										<td><img src="{{ asset('img/' ~ disc.picture) }}" alt="{{ disc.title }}" style="width: 100px; height: auto;"></td>
 										<td>{{ disc.label }}</td>
 										<td>{{ disc.prix }}</td>
-										{# <td>{{ disc.artist.id }}</td> #}
 										<td>{{ disc.artist.name }}</td>
-										<td>{{ disc.quantite }}</td>
-										<td><a href="{{ path('admin_discs_edit', {id: disc.id})}}">Modifier</a></td>
+										{# attention ne pas oublier de soustraire la quantité vendu!!! #}
+										{# pour la vente récupérer la propriété quantity dans detail #}
+										{% set totalQuantity = 0 %}
+
+										{# {% if disc.details is not empty %} #}
+										{# j'initialise la quantite du stock avant la boucle #}
+										{# {% set quantiteStock = 0 %} #}
+											{% for detail in disc.details %}
+												{# {% set totalQuantity = totalQuantity + detail.quantity %} #}
+												{% set totalQuantity = disc.vente + detail.quantity %}
+												{% endfor %}
+
+										{% set quantiteStock = disc.quantite - totalQuantity %}
+										{# {% set quantiteStock = disc.quantite - disc.vente %} #}
+
+										  {% if quantiteStock > 0 %}
+												<td>{{ quantiteStock}}</td>
+												{% else %}
+                                    <td>Épuisé</td>
+                                {% endif %}
+												{# <td>{{ disc.vente }}</td> #}
+												<td>{{ totalQuantity }}</td>
+											{# {% else %}
+												0
+											{% endif %} #}
+										<td>{{ disc.year }}</td>
+										<td>{{ disc.genre }}</td>
+										<td>
+											<a href="{{ path('admin_discs_edit', {id: disc.id})}}">Modifier</a>
+										</td>
 									</tr>
 								</div>
 							{% endfor %}

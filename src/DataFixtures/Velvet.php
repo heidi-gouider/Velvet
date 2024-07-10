@@ -36,8 +36,8 @@ $commande = array(
 
 //`velvet`.`disc`
 $disc = array(
-  array('disc_id' => '1','disc_title' => 'Fugazi','disc_year' => '1984','disc_picture' => 'Fugazi.jpeg','disc_label' => 'EMI','disc_genre' => 'Prog','disc_prix' => '14.99','artist_id' => '7'),
-  array('disc_id' => '2','disc_title' => 'Songs for the Deaf','disc_year' => '2002','disc_picture' => 'Songs for the Deaf.jpeg','disc_label' => 'Interscope Records','disc_genre' => 'Rock/Stoner','disc_prix' => '12.50','artist_id' => '4'),
+  array('disc_id' => '1','disc_title' => 'Fugazi','disc_year' => '1984','disc_picture' => 'Fugazi.jpeg','disc_label' => 'EMI','disc_prix' => '14.99', 'disc_genre' => 'Prog','artist_id' => '7'),
+  array('disc_id' => '2','disc_title' => 'Songs for the Deaf','disc_year' => '2002','disc_picture' => 'Songs for the Deaf.jpeg','disc_label' => 'Interscope Records', 'disc_prix' => '12.50', 'disc_genre' => 'Rock/Stoner','artist_id' => '4'),
   array('disc_id' => '3','disc_title' => 'Harvest Moon','disc_year' => '1992','disc_picture' => 'Harvest Moon.jpeg','disc_label' => 'Reprise Records','disc_genre' => 'Rock','disc_prix' => '4','artist_id' => '1'),
   array('disc_id' => '4','disc_title' => 'Initials BB','disc_year' => '1968','disc_picture' => 'Initials BB.jpeg','disc_label' => 'Philips','disc_genre' => ' Chanson, Pop Rock','disc_prix' => '12','artist_id' => '5'),
   array('disc_id' => '5','disc_title' => 'After the Gold Rush','disc_year' => '1970','disc_picture' => 'After the Gold Rush.jpeg','disc_label' => ' Reprise Records','disc_genre' => 'Country Rock','disc_prix' => '20','artist_id' => '1'),
@@ -55,5 +55,7 @@ $disc = array(
 
 //`velvet`.`user`
 $user = array(
-  array('user_id' => 'Kelly Dillard','user_email' => 'kelly@gmail.com', 'user_roles' => '')
+  // array('user_id' => '1','user_email' => 'kelly@gmail.com', 'user_roles' => '')
+  array('')
+
 );

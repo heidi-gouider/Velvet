@@ -19,6 +19,9 @@ class DiscsFormType extends AbstractType
             ->add('prix')
             ->add('label')
             ->add('quantite')
+            ->add('vente')
+            ->add('year', options:['label' => 'Année'])
+            ->add('genre')
             ->add('artist', EntityType::class, [
                 'class' => Artist::class,
                 // 'choice_label' => 'id',
