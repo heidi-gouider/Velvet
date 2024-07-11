@@ -164,16 +164,16 @@ class Disc
     // private $vente;
 
     #[ORM\Column(nullable: true)]
-    private ?int $vente = null;
+    private ?int $quantiteVendu = null;
 
-    public function getVente(): ?int
+    public function getQuantiteVendu(): ?int
     {
-        return $this->vente;
+        return $this->quantiteVendu;
     }
 
-    public function setVente(?int $vente): static
+    public function setQuantiteVendu(?int $quantiteVendu): static
     {
-        $this->vente = $vente;
+        $this->quantiteVendu = $quantiteVendu;
 
         return $this;
     }

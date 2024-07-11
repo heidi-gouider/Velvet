@@ -32,6 +32,9 @@ class Commande
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user;
 
+    // #[ORM\Column]
+    // private ?int $reference = null;
+
     public function __construct()
     {
         $this->details = new ArrayCollection();
@@ -140,4 +143,16 @@ class Commande
 
         return $this;
     }
+
+    // public function getReference(): ?int
+    // {
+    //     return $this->reference;
+    // }
+
+    // public function setReference(int $reference): static
+    // {
+    //     $this->reference = $reference;
+
+    //     return $this;
+    // }
 }

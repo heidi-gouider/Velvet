@@ -118,11 +118,19 @@ class AccueilController extends AbstractController
             // j'utilise la méthode créer dans le repo findByTopVente()
             $topDiscs = $this->detailRepo->findByTopVente();
     
-            // je passe le résultat à ma vue
+            // je passe le résultat à ma vuepartials
             return $this->render('accueil/index.html.twig', [
                 'topDiscs' => $topDiscs,
             ]);
         }
-    
+    //     /**
+    //  * @Route("/partials/easter", name="easter")
+    //  */
+    #[Route('/easter', name: 'app_easter')]
+
+    public function easter(): Response
+    {
+        return $this->render('partials/easter.php');
+    }
 
 }

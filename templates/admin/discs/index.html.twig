@@ -60,7 +60,7 @@
 										{# {% set quantiteStock = 0 %} #}
 											{% for detail in disc.details %}
 												{# {% set totalQuantity = totalQuantity + detail.quantity %} #}
-												{% set totalQuantity = disc.vente + detail.quantity %}
+												{% set totalQuantity = disc.quantiteVendu + detail.quantity %}
 												{% endfor %}
 
 										{% set quantiteStock = disc.quantite - totalQuantity %}
@@ -80,6 +80,11 @@
 										<td>{{ disc.genre }}</td>
 										<td>
 											<a href="{{ path('admin_discs_edit', {id: disc.id})}}">Modifier</a>
+											{# <a href="{{ path('admin_discs_delete', {id: disc.id})}}">Supprimer</a> #}
+											<form method="post" action="{{ path('admin_discs_delete', {id: disc.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce disque ?');" style="display:inline-block;">
+                                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ disc.id) }}">
+                                            <button class="btn-delete">Supprimer</button>
+                                        </form>
 										</td>
 									</tr>
 								</div>

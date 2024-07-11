@@ -50,7 +50,7 @@ class DiscsController extends AbstractController
             'controller_name' => 'DiscsController',
             'discs' => $discs,
             'quantiteVendu' => $quantiteVendu,
-
+            // 'vente' => $vente,
         ]);
     }
     // test de modif nombre de disques
@@ -125,7 +125,8 @@ return $this->render('admin/discs/ajout.html.twig',[
             // $images = $discForm->get('images')->getData();
 
             // foreach($images as $image){
-                // On définit le dossier de destination
+                // On définit le dossier de destination</div>
+
                 $folder = 'products';
 
                 // On appelle le service d'ajout
@@ -178,16 +179,22 @@ return $this->render('admin/discs/ajout.html.twig',[
     //     return $this->redirectToRoute('discs_index');
     // }
 
-    #[Route('/supprimer/{id}', name: 'supprimer')]
-    public function supprimer(disc $disc)
+    #[Route('/supprimer/{id}', name: 'delete')]
+    public function delete(disc $disc): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
                 // récuperer l'id du disc
         $id = $disc->getId();
-
-        return $this->redirectToRoute('discs_index');
-        // return $this->render('panier/index.html.twig', [
+        $this->em->remove($disc);
+        $this->em->flush();
+        $this->addFlash('success', 'Disque supprimé avec succès');
+        // return $this->redirectToRoute('discs_index');
+        return $this->render('admin/discs/index.html.twig'
+        , [
         //     'controller_name' => 'PanierController',
-        // ]);
+                    'disc' => $disc,
+
+        ]);
     }
 
     #[Route('/valider', name: 'valider')]

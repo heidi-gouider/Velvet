@@ -27,7 +27,7 @@ class DetailsFixtures extends Fixture
             $dateCommande = new \DateTime($comData['date_commande']);
             $commandeDB
                 ->setId($comData['id'])
-                ->setUser($userId['user_id'])
+                ->setUser($users['user_id'])
                 // Je convertis la chaîne de caractères en un objet DateTime
                 // ->setDateCommande($comData['date_commande'])
                 // $dateCommande = new \DateTime($comData['date_commande'])

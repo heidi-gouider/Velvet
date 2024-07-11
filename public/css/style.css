@@ -31,6 +31,21 @@ vérifier s'il n'est pas plus judicieux de nommer des classes perso au cas où i
   background-color: #222222;
 } */
     /* ----------------------------------------- */
+        /*  PAGE ADMINISTRATION DISCS   */
+
+    .btn-delete {
+      color: red;
+      background: none;
+      border: none;
+      text-decoration: underline;
+      cursor: pointer;
+  }
+  
+  /* .btn-delete:hover {
+      color: darkred;
+  } */
+
+      /* ----------------------------------------- */
 
     /*  PAGE ARTIST   */
     
@@ -115,6 +130,10 @@ vérifier s'il n'est pas plus judicieux de nommer des classes perso au cas où i
   /* #formulaire {
     background-color: rgba(36, 38, 41, 0.6);
   } */
+  .text-orange {
+    color: #d2571d; /* Code couleur pour le texte blanc */
+}
+
   .text-white {
     color: #ffffff; /* Code couleur pour le texte blanc */
 }

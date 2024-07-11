@@ -38,7 +38,7 @@ class DiscsFixtures extends Fixture
                 ->setPicture($d['disc_picture'])
                 ->setPrix($d['disc_prix'])
                 ->setQuantite($d['disc_quantite'])
-                ->setVente($d['disc_vente'])
+                ->setQuantiteVendu($d['disc_vente'])
                 ->setYear($d['disc_year'])
                 ->setGenre($d['disc_genre']);
             // Calculer la quantité vendue (vente) à partir des détails
@@ -46,7 +46,7 @@ class DiscsFixtures extends Fixture
             foreach ($d as $detail) {
                 $totalVente += $detail['quantity'];
             }
-            $discDB->setVente($totalVente);
+            $discDB->setQuantiteVendu($totalVente);
             $artist = $artistRepo->find($d['artist_id']);
             $discDB->setArtist($artist);
             $manager->persist($discDB);

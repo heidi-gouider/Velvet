@@ -39,7 +39,9 @@ class CommandeController extends AbstractController
 
   // On remplit la commande
   $commande->setUser($this->getUser());
-
+ // Générer une référence unique entière
+//  $reference = $this->generateUniqueReference();
+//  $commande->setReference($reference);
   $commande->setDateCommande(new \DateTime());
   $commande->setEtat(0); // Etat initial
 
@@ -80,6 +82,7 @@ class CommandeController extends AbstractController
             'controller_name' => 'CommandeController',
         ]);
     }
+    
 // je récupere l'historique de commande de l'utilisateur
 // pour l'afficher via le lien dans la vue du panier
     /**
@@ -99,7 +102,19 @@ class CommandeController extends AbstractController
             'commandes' => $commandes,
         ]);
     }
+    // Définition de la méthode generateUniqueReference
+    // private function generateUniqueReference(): int
+    // {
+        // Utilisez le timestamp actuel en secondes
+        // $timestamp = time();
+        // Ajouter une composante aléatoire pour garantir l'unicité
+        // $randomComponent = random_int(1000, 9999);
 
+        // Combinez les deux pour obtenir une référence unique
+        // $reference = (int) ($timestamp . $randomComponent);
+
+        // return $reference;
+    // }
     // je recupère la méthode et le query builder du repo detail 
     // #[Route('/top_discs', name: 'top_discs')]
     #[Route('/', name: 'top_discs')]

@@ -26,6 +26,7 @@ class DiscRepository extends ServiceEntityRepository
     // $qb = $this->createQueryBuilder('d');
        return (int) $this->createQueryBuilder('d')
            ->select('SUM(detail.quantity)')
+        //    ->select('SUM(d.vente) as quantiteVendu')
            ->leftjoin('d.details', 'detail')
            ->where('d.id = :disc_id')
            ->setParameter('disc_id', $disc->getId())
