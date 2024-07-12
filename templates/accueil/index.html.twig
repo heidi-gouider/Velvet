@@ -8,8 +8,17 @@
 	<div class="contenu">
 
 		<h2 class="text-white text-center">Bienvenue à Velvet Record</h2>
+		<form class="form-inline my-2 my-lg-0 text-center">
+      <input class="form-control-sm mr-sm-2" type="search" placeholder="recherche" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Recherche</button>
+    </form>
+
+	{# Inclusion de la vue des résultats si des résultats existent #}
+    {# {% if discs is not empty or artists is not empty %}
+        {% include 'search/results.html.twig' %}
+    {% endif %} #}
 		{# pour afficher les disques les plus vendus je vais ajouter une méhode
-																						dans mon repo  disc  que je vais appeler dans le controller de la page d'accueil#}
+	dans mon repo  disc  que je vais appeler dans le controller de la page d'accueil#}
 
 		<div class="container">
 			<div class="row mt-5">
@@ -36,10 +45,10 @@
 			<h2 class="text-white text-center">Notre Catalogue</h2>
 
 			<li class="nav-item text-orange">
-				<a class="nav-link text-center" href="{{ path('app_artists') }}">Découvrir nos  Artistes</a>
+				<a class="nav-link text-center text-orange" href="{{ path('app_artists') }}">Découvrir nos  Artistes</a>
 				</li>
-			<li class="nav-item text-orange">
-				<a class="nav-link text-center" href="{{ path('app_discs') }}">Tous nos  Albums</a>
+			<li class="nav-item">
+				<a class="nav-link text-center text-orange" href="{{ path('app_discs') }}">Tous nos  Albums</a>
 			</li>
 		</div>
 		<div class="text-center">

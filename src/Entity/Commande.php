@@ -87,6 +87,27 @@ class Commande
 
         return $this;
     }
+// ajout des différents etat de la commande
+const ETAT_ENREGISTREE_PAYEE = 0;
+    const ETAT_EN_PREPARATION = 1;
+    const ETAT_EN_COURS_DE_LIVRAISON = 2;
+    const ETAT_LIVREE = 3;
+
+    public static function getEtatLibelle(int $etat): string
+    {
+        switch ($etat) {
+            case self::ETAT_ENREGISTREE_PAYEE:
+                return 'enregistrée/payée';
+            case self::ETAT_EN_PREPARATION:
+                return 'en préparation';
+            case self::ETAT_EN_COURS_DE_LIVRAISON:
+                return 'en cours de livraison';
+            case self::ETAT_LIVREE:
+                return 'livrée';
+            default:
+                return 'état inconnu';
+        }
+    }
 
     /**
      * @return Collection<int, Detail>

@@ -30,6 +30,14 @@ vérifier s'il n'est pas plus judicieux de nommer des classes perso au cas où i
 /* #navbarSupportedContent{
   background-color: #222222;
 } */
+
+.navbar-nav a{
+  color: #d2571d;
+}
+.nav-link{
+  color: #d2571d;
+}
+
     /* ----------------------------------------- */
         /*  PAGE ADMINISTRATION DISCS   */
 

@@ -42,7 +42,8 @@ class CommandeController extends AbstractController
  // Générer une référence unique entière
 //  $reference = $this->generateUniqueReference();
 //  $commande->setReference($reference);
-  $commande->setDateCommande(new \DateTime());
+// $dateCommande = $commande->getDateCommande();
+//   $commande->setDateCommande(new \DateTime());
   $commande->setEtat(0); // Etat initial
 
   $total = 0;
@@ -98,10 +99,19 @@ class CommandeController extends AbstractController
     }
         $commandes = $user->getCommandes();
 
+ // Préparer les commandes avec leur libellé d'état
+ $commandesWithEtatLibelle = [];
+ foreach ($commandes as $commande) {
+     $commandesWithEtatLibelle[] = [
+         'commande' => $commande,
+         'etat_libelle' => \App\Entity\Commande::getEtatLibelle($commande->getEtat()),
+     ];
+
         return $this->render('panier/commandes.html.twig', [
             'commandes' => $commandes,
         ]);
     }
+}
     // Définition de la méthode generateUniqueReference
     // private function generateUniqueReference(): int
     // {
@@ -114,6 +124,19 @@ class CommandeController extends AbstractController
         // $reference = (int) ($timestamp . $randomComponent);
 
         // return $reference;
+    // }
+
+    //  #[Route("/commande/{id}", name : "commande_show")]
+     
+    //  public function show(Commande $commande): Response
+    // {
+    //     $etat = $commande->getEtat();
+    //     $etatLibelle = Commande::getEtatLibelle($etat);
+
+    //     return $this->render('commande/show.html.twig', [
+    //         'commande' => $commande,
+    //         'etat_libelle' => $etatLibelle,
+    //     ]);
     // }
     // je recupère la méthode et le query builder du repo detail 
     // #[Route('/top_discs', name: 'top_discs')]

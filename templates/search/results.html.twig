@@ -1,0 +1,34 @@
+{# {% extends 'base.html.twig' %} #}
+
+{% block body %}
+    {# <h1>Recherche</h1> #}
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn btn-outline-success btn-sm my-2 my-sm-0" type="submit">Recherche</button>
+    {{ form_end(form) }}
+
+    {% if query is not null %}
+        <h2>Résultats pour "{{ query }}"</h2>
+        {# Afficher les résultats de la recherche #}
+{% if discs is empty %}
+            <p>Aucun résultats</p>
+        {% else %}
+            <ul>
+                {% for disc in discs %}
+                    <li>{{ disc.title }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <h3>Artistes</h3>
+        {% if artists is empty %}
+            <p>Aucun artiste trouvé.</p>
+        {% else %}
+            <ul>
+                {% for artist in artists %}
+                    <li>{{ artist.name }}</li>
+                {% endfor %}
+            </ul>        {% endif %}
+    {% endif %}
+{% endblock %}

@@ -21,18 +21,20 @@
 								<tr>
 									<th>ID</th>
 									<th>Date</th>
-									<th>N° Référence</th>
+									{# <th>N° Référence</th> #}
 									<th>Montant</th>
-									<th>Détails</th>
+									<th>Etat</th>
+									{# <th>Détails</th> #}
 								</tr>
 							</thead>
 							<tbody>
 								{% for commande in commandes %}
 									<tr>
 										<td>{{ commande.id }}</td>
-										<td>{{ commande.date_commande|date('Y-m-d H:i') }}</td>
+										{# <td>{{ commande.date_commande }}</td> #}
 										<td>{# {{ commande.ref }} #}</td>
 										<td>{{ commande.total }}€</td>
+										<td>{{ commande.etat }}</td>
 										<td>
 											{# <a href="{{ path('order_show', {'id': commande.id}) }}">Voir</a> #}
 										</td>
